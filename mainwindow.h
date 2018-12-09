@@ -30,6 +30,7 @@ private:
     Ui::MainWindow *ui;
     // QTableWidget *table;
     // QLayout *layout;
+    QAction *newAction;
      QAction *openAction;
      QAction *saveAction;
      QAction *addAction;
@@ -37,6 +38,15 @@ private:
      QAction *sortAction;
      QAction *searchAction;
      studentDatabase *stuDB;
+private slots:
+     void newFile();
+     void openFile();
+     void saveFile();
+     void addModify();
+     void deleteModify();
+     void sortView();
+     void searchView();
+     void tableModify(int row,int column);
 };
 
 #endif // MAINWINDOW_H
