@@ -1,6 +1,8 @@
 ﻿#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include<string>
+#include<iostream>
+using namespace std;
 #include <QMainWindow>
 #include <QWidget>
 #include<QTableWidget>
@@ -13,6 +15,12 @@
 #include<QTableWidget>
 #include<QObject>
 #include<QSize>
+#include<QString>
+#include<QFileDialog>
+#include<QFile>
+#include<QMessageBox>
+#include<QTextStream>
+#include<Qtextedit>
 #include"studentdatabase.h"
 namespace Ui {
 class MainWindow;

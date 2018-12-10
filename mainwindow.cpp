@@ -21,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     file->addAction(newAction);
 
     openAction = new QAction(tr("打开..."),this);
+    openAction->setStatusTip(tr("1234"));
     connect(openAction,SIGNAL(triggered()),this,SLOT(openFile()));
     file->addAction(openAction);
 
@@ -77,7 +78,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(table,SIGNAL(cellChanged(int,int)),this,SLOT(tableModify(int,int)));
 
     QStringList header;
-    header<<QObject::tr("姓名")<<QObject::tr("学号")<<QObject::tr("年级")<<QObject::tr("专业方向")<<QObject::tr("GPA");
+    header<<QObject::tr("姓名")<<QObject::tr("性别")<<QObject::tr("学号")<<QObject::tr("年级")<<QObject::tr("专业方向")<<QObject::tr("GPA");
     //table->horizontalHeader()->setDefaultSectionSize(15);
     //table->horizontalHeader()->setClickable(false);
     table->setHorizontalHeaderLabels(header);
@@ -88,9 +89,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     widget->setLayout(layout);
     //工具栏搜索：支持姓名、id两种精确搜索
-    //工具栏搜索：支持专业、GPA、年龄三种模糊搜索
     QToolBar *toolBar = addToolBar(tr("&搜索"));
     toolBar->addAction(searchAction);
+    //工具栏搜索：支持专业、GPA、年龄三种模糊搜索
+
 
     //数据库呈现:这里无需呈现，因为刚打开程序，既没有添加也没有读入文件
     //后续考虑加入历史纪录，每次打开软件后，自动开打开上一次的文件。这样需要先读一个墓碑文件，之后再读入用户文件，初始化数据库，再修改行数
@@ -107,11 +109,60 @@ void MainWindow::newFile(){
 
 void MainWindow::openFile(){
     qDebug()<<"openFile";
+    QString path = QFileDialog::getOpenFileName(this,
+                                                tr("Open File"),
+                                                ".",
+                                                tr("Text Files(*.txt)"));
+    if(!path.isEmpty()) {
+        QFile file(path);
+        if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            QMessageBox::warning(this, tr("Read File"),
+                                 tr("Cannot open file:\n%1").arg(path));
+            return;
+        }
+        QTextStream in(&file);
+        //QtextEdit->setText(in.readAll());
 
+        file.close();
+    } else {
+        QMessageBox::warning(this, tr("Path"),
+                             tr("You did not select any file."));
+    }
 }
 void MainWindow::saveFile(){
     qDebug()<<"saveFile";
+    QString path = QFileDialog::getSaveFileName(this,
+                                                    tr("Open File"),
+                                                    ".",
+                                                    tr("Text Files(*.txt)"));
+        if(!path.isEmpty()) {
+            QFile file(path);
+            if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+                QMessageBox::warning(this, tr("Write File"),
+                                           tr("Cannot open file:\n%1").arg(path));
+                return;
+            }
+            QTextStream out(&file);
+            out.setCodec("uft-8");
+            for(int i = 0; i < table->rowCount();i++){
+                for(int j = 0; j < table->columnCount();j++){
+                    //out << i << j;
+                    //out << table->item(i,j)->text().toStdString().data();
+                    //
+                    if(table->item(i,j)!=NULL){
 
+                    out << table->item(i,j)->text();//.toStdString().c_str();
+                    qDebug()<<table->item(i,j)->text();//.toStdString().c_str();
+                    }
+                }
+            }
+            //out << textEdit->toPlainText();
+            file.close();
+        } else {
+            QMessageBox::warning(this, tr("Path"),
+                                 tr("You did not select any file."));
+        }
+        qDebug()<<"over!";
 }
 void MainWindow::addModify(){
     qDebug()<<"addModify";
