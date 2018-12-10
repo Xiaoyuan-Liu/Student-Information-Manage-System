@@ -47,7 +47,18 @@ MainWindow::MainWindow(QWidget *parent) :
     view->addAction(searchAction);
 
 
+    QMenu *statistic = menuBar()->addMenu(tr("&统计"));
+    gradeAction = new QAction(tr("年级"));
+    connect(gradeAction,SIGNAL(triggered()),this,SLOT(gradeStatistic()));
+    statistic->addAction(gradeAction);
 
+    majorAction = new QAction(tr("专业"));
+    connect(majorAction,SIGNAL(triggered()),this,SLOT(majorStatistic()));
+    statistic->addAction(majorAction);
+
+    gpaAction = new QAction(tr("GPA"));
+    connect(gpaAction,SIGNAL(triggered()),this,SLOT(gpaStatistic()));
+    statistic->addAction(gpaAction);
 
 
 
@@ -55,10 +66,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     //表格
-    QWidget *widget = new QWidget();
+    widget = new QWidget();
     this->setCentralWidget(widget);
     QLayout *layout = new QHBoxLayout;
-    QTableWidget *table = new QTableWidget();
+    table = new QTableWidget();
     table->setColumnCount(5);
     table->setRowCount(2);
     table->horizontalHeader()->setHighlightSections(false);
@@ -90,38 +101,49 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 
 void MainWindow::newFile(){
-    qDebug()<<tr("newFile");
+    qDebug()<<"newFile";
 
 }
 
 void MainWindow::openFile(){
-    qDebug()<<tr("openFile");
+    qDebug()<<"openFile";
 
 }
 void MainWindow::saveFile(){
-    qDebug()<<tr("saveFile");
+    qDebug()<<"saveFile";
 
 }
 void MainWindow::addModify(){
-    qDebug()<<tr("addModify");
-
+    qDebug()<<"addModify";
+    table->setRowCount(table->rowCount()+1);
 }
 void MainWindow::deleteModify(){
-    qDebug()<<tr("deleteModify");
+    qDebug()<<"deleteModify";
 
 }
 void MainWindow::sortView(){
-    qDebug()<<tr("sortView");
+    qDebug()<<"sortView";
 
 }
 void MainWindow::searchView(){
-    qDebug()<<tr("searchView");
+    qDebug()<<"searchView";
 
 }
 void MainWindow::tableModify(int row,int column){
     qDebug()<<"modify";
     qDebug()<<row;
     qDebug()<<column;
+}
+void MainWindow::gradeStatistic(){
+    qDebug()<<"grade";
+}
+
+void MainWindow::majorStatistic(){
+    qDebug()<<"major";
+}
+
+void MainWindow::gpaStatistic(){
+    qDebug()<<"gpa";
 }
 
 MainWindow::~MainWindow()

@@ -37,7 +37,14 @@ private:
      QAction *deleteAction;
      QAction *sortAction;
      QAction *searchAction;
+     QAction *gradeAction;
+     QAction *majorAction;
+     QAction *gpaAction;
      studentDatabase *stuDB;
+
+
+     QWidget *widget;
+     QTableWidget *table;
 private slots:
      void newFile();
      void openFile();
@@ -46,6 +53,9 @@ private slots:
      void deleteModify();
      void sortView();
      void searchView();
+     void gradeStatistic();
+     void majorStatistic();
+     void gpaStatistic();
      void tableModify(int row,int column);
 };
 
