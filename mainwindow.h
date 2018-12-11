@@ -21,7 +21,11 @@ using namespace std;
 #include<QMessageBox>
 #include<QTextStream>
 #include<Qtextedit>
+#include<QContextMenuEvent>
+#include<QVector>
+#include<QComboBox>
 #include"studentdatabase.h"
+#include"delegate.h"
 namespace Ui {
 class MainWindow;
 }
@@ -41,30 +45,43 @@ private:
     QAction *newAction;
      QAction *openAction;
      QAction *saveAction;
+     QAction *exitAction;
      QAction *addAction;
      QAction *deleteAction;
-     QAction *sortAction;
+     //QAction *sortAction;
      QAction *searchAction;
      QAction *gradeAction;
      QAction *majorAction;
      QAction *gpaAction;
+     QAction *insertAction;
      studentDatabase *stuDB;
 
-
+     bool c[5];
      QWidget *widget;
+     QLayout *layout;
      QTableWidget *table;
+     QVector<QComboBox*> *QComboBoxList;
+     void tableInitialize();
+     int partition(int p, int q, int column);
+     void quickSort(int p, int q, int column);
+     void Swap(int p1,int p2, int column);
+     virtual void contextMenuEvent(QContextMenuEvent *event);
 private slots:
      void newFile();
      void openFile();
      void saveFile();
      void addModify();
      void deleteModify();
-     void sortView();
+     void sortView(int colunmIndex);
      void searchView();
      void gradeStatistic();
      void majorStatistic();
      void gpaStatistic();
      void tableModify(int row,int column);
+     void insertBefore();
+     void insertAfter();
+     void deleteLine();
+     void print_s();
 };
 
 #endif // MAINWINDOW_H
