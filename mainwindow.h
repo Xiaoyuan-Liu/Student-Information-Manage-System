@@ -24,8 +24,10 @@ using namespace std;
 #include<QContextMenuEvent>
 #include<QVector>
 #include<QComboBox>
+#include<QLineEdit>
 #include"studentdatabase.h"
 #include"delegate.h"
+#include"dialog.h"
 namespace Ui {
 class MainWindow;
 }
@@ -55,12 +57,18 @@ private:
      QAction *gpaAction;
      QAction *insertAction;
      studentDatabase *stuDB;
-
+     dialog *searchDialog;
      bool c[5];
      QWidget *widget;
      QLayout *layout;
      QTableWidget *table;
      QVector<QComboBox*> *QComboBoxList;
+
+     QLineEdit *searchQLineEditToolBar;
+     QAction *searchToolBar;
+     QAction *lastToolBar;
+     QAction *nextToolBar;
+
      void tableInitialize();
      int partition(int p, int q, int column);
      void quickSort(int p, int q, int column);
@@ -82,6 +90,10 @@ private slots:
      void insertAfter();
      void deleteLine();
      void print_s();
+     void searchQlineEditChanged(QString qstr);
+     void searchToolBarTriggered();
+     void lastToolBarTriggered();
+     void nextToolBarTriggered();
 };
 
 #endif // MAINWINDOW_H

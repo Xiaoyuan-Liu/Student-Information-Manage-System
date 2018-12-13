@@ -1,5 +1,6 @@
 ﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
+
 #include<QDebug>
 #define itemEmpty " "
 MainWindow::MainWindow(QWidget *parent) :
@@ -120,7 +121,23 @@ MainWindow::MainWindow(QWidget *parent) :
     for(int i = 0; i < table->columnCount();i++)
         c[i] = true;
     this->resize(QSize(800,600));
-    ui->mainToolBar->setVisible(false);
+    searchQLineEditToolBar = new QLineEdit;
+    searchToolBar = new QAction(tr("&搜索"),this);
+    lastToolBar = new QAction(tr("&上一个"),this);
+    nextToolBar = new QAction(tr("&下一个"),this);
+    ui->mainToolBar->addWidget(searchQLineEditToolBar);
+    ui->mainToolBar->addAction(searchToolBar);
+    ui->mainToolBar->addAction(lastToolBar);
+    ui->mainToolBar->addAction(nextToolBar);
+    connect(searchQLineEditToolBar,SIGNAL(textChanged(QString)),this,SLOT(searchQlineEditChanged(QString)));
+    connect(searchToolBar,SIGNAL(triggered()),this,SLOT(searchToolBarTriggered()));
+    connect(lastToolBar,SIGNAL(triggered()),this,SLOT(lastToolBarTriggered()));
+    connect(nextToolBar,SIGNAL(triggered()),this,SLOT(nextToolBarTriggered()));
+
+
+    //ui->mainToolBar->addAction(new QAction(tr("&完成"),this));
+    //ui->mainToolBar->addWidget(QPushButton(tr("&搜索")))
+    //ui->mainToolBar->setVisible(false);
 }
 
 void MainWindow::tableInitialize(){
@@ -316,6 +333,8 @@ void MainWindow::sortView(int columnIndex){
 }
 void MainWindow::searchView(){
     qDebug()<<"searchView";
+    searchDialog = new dialog;
+    searchDialog->show();
 
 }
 void MainWindow::tableModify(int row,int column){
@@ -429,4 +448,23 @@ void MainWindow::deleteLine(){
 }
 
 void MainWindow::print_s(){
+}
+
+
+void MainWindow::searchQlineEditChanged(QString qstr){
+     qDebug()<<qstr;
+      qDebug()<<"searchQlineEdit";
+}
+
+void MainWindow::searchToolBarTriggered(){
+    qDebug()<<"searchToolBar";
+}
+
+
+void MainWindow::lastToolBarTriggered(){
+     qDebug()<<"lastToolBar";
+}
+
+void MainWindow::nextToolBarTriggered(){
+     qDebug()<<"nextToolBar";
 }

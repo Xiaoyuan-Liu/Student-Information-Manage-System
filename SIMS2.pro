@@ -27,11 +27,13 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     student.cpp \
     studentdatabase.cpp \
-    delegate.cpp
+    delegate.cpp \
+    dialog.cpp
 
 HEADERS  += mainwindow.h \
     studentdatabase.h \
     student.h \
-    delegate.h
+    delegate.h \
+    dialog.h
 
 FORMS    += mainwindow.ui
