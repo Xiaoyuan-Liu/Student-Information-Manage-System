@@ -39,17 +39,21 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-
+protected:
+    void closeEvent(QCloseEvent *event);
 private:
     Ui::MainWindow *ui;
     // QTableWidget *table;
     // QLayout *layout;
+    bool saved;//文件保存标识符
     QAction *newAction;
      QAction *openAction;
      QAction *saveAction;
      QAction *exitAction;
      QAction *addAction;
      QAction *deleteAction;
+     QAction *moveUpAction;
+     QAction *moveDownAction;
      //QAction *sortAction;
      QAction *searchAction;
      QAction *gradeAction;
@@ -58,7 +62,7 @@ private:
      QAction *insertAction;
      studentDatabase *stuDB;
      dialog *searchDialog;
-     bool c[5];
+     bool c[8];
      QWidget *widget;
      QLayout *layout;
      QTableWidget *table;
@@ -68,7 +72,13 @@ private:
      QAction *searchToolBar;
      QAction *lastToolBar;
      QAction *nextToolBar;
+     QPushButton *searchButton;
+     QPushButton *lastButton;
+     QPushButton *nextButton;
 
+     QString searchQstr;
+     int searchRow;
+     int searchColumn;
      void tableInitialize();
      int partition(int p, int q, int column);
      void quickSort(int p, int q, int column);
@@ -80,6 +90,8 @@ private slots:
      void saveFile();
      void addModify();
      void deleteModify();
+     void moveUpModify();
+     void moveDownModify();
      void sortView(int colunmIndex);
      void searchView();
      void gradeStatistic();
@@ -94,6 +106,7 @@ private slots:
      void searchToolBarTriggered();
      void lastToolBarTriggered();
      void nextToolBarTriggered();
+     //void qtClose();
 };
 
 #endif // MAINWINDOW_H
