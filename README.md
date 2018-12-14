@@ -6,6 +6,7 @@
 
 ## 一、系统指南
 本系统为表格式的学生信息管理系统，提供了文件新建、打开及保存功能，还可在表格中对数据进行增加、删除、修改、搜索，下面将一一介绍这些功能
+![](1.png)
 ### 1、新建文件
 新建文件将会产生一个全新的空表格，在新建文件时，当前表格的内容将会被删除，系统会自动检测当前表格内容是否已经被保存过，如果未保存过的，会对用户进行提示；否则将直接生成新表格
 ### 2、打开文件
@@ -17,17 +18,26 @@
 点击“增加一行”，会在表格末尾生成一行空行。\
 点击“上方插入一行”，会在当前选中表格的上方插入一行空行。\
 点击“下方插入一行”，会在当前选中表格的下方插入一行空行。\
+![](9.png)
+![](8.png)
 ### 5、删除
 在系统菜单栏编辑项中和系统右键菜单中，提供了“删除”选项。\
 点击删除选项之后，当前选中的行会被删除掉。
 ### 6、修改
-双击表项即可进入编辑模式，对表格内容进行编辑。其中性别和专业栏还提供了下拉选择项，便于使用者对其进行编辑。
-### 7、查询
+双击表项即可进入编辑模式，对表格内容进行编辑。其中性别、专业和出生日期栏还提供了下拉选择项，便于使用者对其进行编辑。
+![](2.png)
+![](3.png)
+![](4.png)
+### 7、搜索
 系统工具栏中有一个搜索文本框，用户只需要在框中输入搜索内容，之后点击窗口右边的“搜索”按钮即可进行搜索。除了搜索按钮以外，还有“上一个”和“下一个”按钮，用以继续查询。
-### 8、搜索
+![](5.png)
+![](6.png)
+![](7.png)
+### 8、排序
 若要按照某个属性进行排序，只需要双击该属性表头即可。首次点击按照字符正序按该列对表格进行扩展排序，再次点击进行倒序排序，再次点击又变为正序排序，以此类推。搜索仅支持精确搜索，不支持模糊搜索。
+![](10.png)
 ## 二、系统实现
-本系统主要由两个继承类构成，一个是*MianWindow*类，它继承自*QMainWindow*类，是系统的主要部分，还有一个类*Delegate*，它继承自*QItemDelegate*类，用以实现表项中的下拉选项。\
+本系统主要由三个继承类构成，一个是*MianWindow*类，它继承自*QMainWindow*类，是系统的主要部分，另外两个类为*Delegate*和*DateDelegate*类，它们都继承自*QItemDelegate*类，用以实现表项中的下拉选项，前者实现了性别和专业方向下拉选项，后者实现了出生日期的下拉选项。\
 *MainWindow*类中还集成了*QAction*类、*QWidget*类、*QLayout*类、*QTableWidget*类、*QLineEdit*类、*QPushButton*类、*QString*类。**_请注意，系统中出现的其他Qt类，以及dialog.cpp、student.cpp、studentdatabase.cpp和他们对应的头文件中封装的类，仅为系统实现过程中的遗产代码，在系统中不发挥作用，仅为日后留作他用。_**~~其实就是懒得删掉。~~
 ### 1、MainWindow类
 MainWindow类属性和接口定义如下
@@ -134,7 +144,7 @@ private slots:
 };
 ```
 ### 2、Delegate类
-Delegate类继承自QDelegate类，用以实现自定义委托。Delegate类属性和接口定义如下
+Delegate类继承自QDelegate类，用以实现的性别和专业自定义委托。Delegate类属性和接口定义如下
 ```javascript
 class Delegate : public QItemDelegate
 {
@@ -156,6 +166,32 @@ public:
 
     void setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const;
 
+private:
+
+};
+```
+### 3、DateDelegate类
+DateDelegate类也继承自QDelegate类，用以实现出生日期的自定义委托，DateDelegate类属性和接口定义如下
+```javascript
+class DateDelegate : public QItemDelegate
+{
+    Q_OBJECT
+
+public:
+    DateDelegate(QObject *parent = nullptr);
+   ~DateDelegate();
+
+    //返回改变Model数据的widget，该widget是经过定制行为的Widget
+    QWidget *createEditor(QWidget * parent, const QStyleOptionViewItem & option, const QModelIndex & index) const;
+
+    //将可操作的数据提供给widget
+    void setEditorData(QWidget * editor, const QModelIndex & index) const;
+    
+    //将widget的数据展示到Item中
+    void setModelData(QWidget * editor, QAbstractItemModel * model, const QModelIndex & index) const;  
+
+    //确保widget能够正确显示到view中
+    void updateEditorGeometry(QWidget * editor, const QStyleOptionViewItem & option, const QModelIndex & index) const;
 private:
 
 };

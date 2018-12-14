@@ -48,29 +48,35 @@ SOURCES       = main.cpp \
 		student.cpp \
 		studentdatabase.cpp \
 		delegate.cpp \
-		dialog.cpp debug\moc_mainwindow.cpp \
+		dialog.cpp \
+		datedelegate.cpp debug\moc_mainwindow.cpp \
 		debug\moc_delegate.cpp \
-		debug\moc_dialog.cpp
+		debug\moc_dialog.cpp \
+		debug\moc_datedelegate.cpp
 OBJECTS       = debug/main.o \
 		debug/mainwindow.o \
 		debug/student.o \
 		debug/studentdatabase.o \
 		debug/delegate.o \
 		debug/dialog.o \
+		debug/datedelegate.o \
 		debug/moc_mainwindow.o \
 		debug/moc_delegate.o \
-		debug/moc_dialog.o
+		debug/moc_dialog.o \
+		debug/moc_datedelegate.o
 
 DIST          =  mainwindow.h \
 		studentdatabase.h \
 		student.h \
 		delegate.h \
-		dialog.h main.cpp \
+		dialog.h \
+		datedelegate.h main.cpp \
 		mainwindow.cpp \
 		student.cpp \
 		studentdatabase.cpp \
 		delegate.cpp \
-		dialog.cpp
+		dialog.cpp \
+		datedelegate.cpp
 QMAKE_TARGET  = SIMS2
 DESTDIR        = debug\ #avoid trailing-slash linebreak
 TARGET         = SIMS2.exe
@@ -82,7 +88,7 @@ first: all
 all: Makefile.Debug  $(DESTDIR_TARGET)
 
 $(DESTDIR_TARGET): ui_mainwindow.h $(OBJECTS) 
-	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) $(OBJECTS)  $(LIBS)
+	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) object_script.SIMS2.Debug  $(LIBS)
 
 qmake: FORCE
 	@$(QMAKE) -o Makefile.Debug SIMS2.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -90,10 +96,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) SIMS2.zip $(SOURCES) $(DIST) SIMS2.pro ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\spec_pre.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\qdevice.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\device_config.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\common\angle.conf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\qconfig.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dcore.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dcore_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dextras.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dextras_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dinput.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dinput_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dlogic.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dlogic_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquick.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquick_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickextras.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickextras_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickinput.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickinput_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickrender.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickrender_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3drender.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3drender_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_accessibility_support_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axbase.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axbase_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axcontainer.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axserver.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axserver_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_bluetooth.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_charts.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_charts_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_clucene_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_concurrent.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_core.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_core_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_datavisualization.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_datavisualization_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_dbus.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_dbus_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_designer.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_designer_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_egl_support_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_fb_support_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gamepad.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gamepad_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gui.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gui_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_help.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_help_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_location.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_location_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimedia.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_network.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_network_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_networkauth.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_networkauth_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_nfc.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_nfc_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_opengl.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_opengl_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_openglextensions.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_packetprotocol_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_positioning.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_positioning_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_printsupport.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_purchasing.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_purchasing_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qml.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qml_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmldebug_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmltest.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quick.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quick_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_script.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_script_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scripttools.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scripttools_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scxml.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scxml_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sensors.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sensors_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialbus.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialbus_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialport.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialport_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sql.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sql_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_svg.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_svg_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_testlib.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_testlib_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_texttospeech.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_texttospeech_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_theme_support_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_uiplugin.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_uitools.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_uitools_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_webchannel.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_webchannel_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_websockets.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_websockets_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_widgets.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_widgets_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_winextras.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_winextras_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xml.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xml_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\qt_functions.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\qt_config.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\win32-g++\qmake.conf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\spec_post.prf .qmake.stash ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\exclusive_builds.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\toolchain.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\default_pre.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\win32\default_pre.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\resolve_config.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\exclusive_builds_post.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\default_post.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\build_pass.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\qml_debug.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\win32\rtti.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\precompile_header.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\warn_on.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\qt.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\resources.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\moc.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\win32\opengl.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\uic.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\qmake_use.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\file_copies.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\win32\windows.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\testcase_targets.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\exceptions.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\yacc.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\lex.prf SIMS2.pro ..\..\QT\QT5.8.0\5.8\mingw53_32\lib\qtmaind.prl ..\..\QT\QT5.8.0\5.8\mingw53_32\lib\Qt5Widgetsd.prl ..\..\QT\QT5.8.0\5.8\mingw53_32\lib\Qt5Guid.prl ..\..\QT\QT5.8.0\5.8\mingw53_32\lib\Qt5Cored.prl    ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\data\dummy.cpp mainwindow.h studentdatabase.h student.h delegate.h dialog.h main.cpp mainwindow.cpp student.cpp studentdatabase.cpp delegate.cpp dialog.cpp mainwindow.ui    
+	$(ZIP) SIMS2.zip $(SOURCES) $(DIST) SIMS2.pro ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\spec_pre.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\qdevice.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\device_config.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\common\angle.conf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\qconfig.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dcore.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dcore_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dextras.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dextras_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dinput.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dinput_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dlogic.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dlogic_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquick.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquick_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickextras.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickextras_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickinput.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickinput_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickrender.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickrender_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3drender.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3drender_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_accessibility_support_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axbase.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axbase_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axcontainer.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axserver.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axserver_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_bluetooth.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_charts.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_charts_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_clucene_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_concurrent.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_core.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_core_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_datavisualization.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_datavisualization_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_dbus.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_dbus_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_designer.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_designer_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_egl_support_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_fb_support_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gamepad.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gamepad_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gui.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gui_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_help.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_help_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_location.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_location_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimedia.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_network.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_network_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_networkauth.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_networkauth_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_nfc.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_nfc_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_opengl.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_opengl_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_openglextensions.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_packetprotocol_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_positioning.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_positioning_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_printsupport.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_purchasing.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_purchasing_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qml.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qml_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmldebug_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmltest.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quick.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quick_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_script.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_script_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scripttools.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scripttools_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scxml.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scxml_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sensors.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sensors_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialbus.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialbus_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialport.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialport_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sql.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sql_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_svg.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_svg_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_testlib.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_testlib_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_texttospeech.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_texttospeech_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_theme_support_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_uiplugin.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_uitools.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_uitools_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_webchannel.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_webchannel_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_websockets.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_websockets_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_widgets.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_widgets_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_winextras.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_winextras_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xml.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xml_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\qt_functions.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\qt_config.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\win32-g++\qmake.conf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\spec_post.prf .qmake.stash ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\exclusive_builds.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\toolchain.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\default_pre.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\win32\default_pre.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\resolve_config.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\exclusive_builds_post.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\default_post.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\build_pass.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\qml_debug.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\win32\rtti.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\precompile_header.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\warn_on.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\qt.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\resources.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\moc.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\win32\opengl.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\uic.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\qmake_use.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\file_copies.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\win32\windows.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\testcase_targets.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\exceptions.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\yacc.prf ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\lex.prf SIMS2.pro ..\..\QT\QT5.8.0\5.8\mingw53_32\lib\qtmaind.prl ..\..\QT\QT5.8.0\5.8\mingw53_32\lib\Qt5Widgetsd.prl ..\..\QT\QT5.8.0\5.8\mingw53_32\lib\Qt5Guid.prl ..\..\QT\QT5.8.0\5.8\mingw53_32\lib\Qt5Cored.prl    ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\data\dummy.cpp mainwindow.h studentdatabase.h student.h delegate.h dialog.h datedelegate.h main.cpp mainwindow.cpp student.cpp studentdatabase.cpp delegate.cpp dialog.cpp datedelegate.cpp mainwindow.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug\main.o debug\mainwindow.o debug\student.o debug\studentdatabase.o debug\delegate.o debug\dialog.o debug\moc_mainwindow.o debug\moc_delegate.o debug\moc_dialog.o
+	-$(DEL_FILE) debug\main.o debug\mainwindow.o debug\student.o debug\studentdatabase.o debug\delegate.o debug\dialog.o debug\datedelegate.o debug\moc_mainwindow.o debug\moc_delegate.o debug\moc_dialog.o debug\moc_datedelegate.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -118,9 +124,9 @@ compiler_moc_predefs_clean:
 debug/moc_predefs.h: ../../QT/QT5.8.0/5.8/mingw53_32/mkspecs/features/data/dummy.cpp
 	g++ -pipe -fno-keep-inline-dllexport -g -std=gnu++11 -frtti -Wall -Wextra -dM -E -o debug\moc_predefs.h ..\..\QT\QT5.8.0\5.8\mingw53_32\mkspecs\features\data\dummy.cpp
 
-compiler_moc_header_make_all: debug/moc_mainwindow.cpp debug/moc_delegate.cpp debug/moc_dialog.cpp
+compiler_moc_header_make_all: debug/moc_mainwindow.cpp debug/moc_delegate.cpp debug/moc_dialog.cpp debug/moc_datedelegate.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) debug\moc_mainwindow.cpp debug\moc_delegate.cpp debug\moc_dialog.cpp
+	-$(DEL_FILE) debug\moc_mainwindow.cpp debug\moc_delegate.cpp debug\moc_dialog.cpp debug\moc_datedelegate.cpp
 debug/moc_mainwindow.cpp: ../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QMainWindow \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmainwindow.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
@@ -278,6 +284,8 @@ debug/moc_mainwindow.cpp: ../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QMai
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QVector \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QComboBox \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcombobox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLineEdit \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
 		studentdatabase.h \
 		student.h \
 		delegate.h \
@@ -289,14 +297,314 @@ debug/moc_mainwindow.cpp: ../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QMai
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QPainter \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpainter.h \
 		dialog.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLineEdit \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QtWidgets \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QtWidgetsDepends \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QtCore \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QtCoreDepends \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstracteventdispatcher.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractnativeeventfilter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractproxymodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractstate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstracttransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qanimationgroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qarraydataops.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qarraydatapointer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbasictimer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbitarray.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbuffer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbytearraymatcher.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcache.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcollator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcommandlineoption.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcommandlineparser.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcryptographichash.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdeadlinetimer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qelapsedtimer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdiriterator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qeasingcurve.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qendian.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qeventtransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qexception.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfactoryinterface.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfileselector.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfilesystemwatcher.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfinalstate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfuture.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfutureinterface.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qrunnable.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qresultstore.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfuturesynchronizer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfuturewatcher.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qhistorystate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qidentityproxymodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qisenum.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qjsonarray.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qjsonvalue.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qjsondocument.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qjsonobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlibrary.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlibraryinfo.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qversionnumber.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlinkedlist.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlockfile.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qloggingcategory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmath.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmessageauthenticationcode.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmetaobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmimedata.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmimedatabase.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmimetype.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qobjectcleanuphandler.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qparallelanimationgroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpauseanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpointer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpluginloader.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qprocess.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpropertyanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qvariantanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qqueue.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qreadwritelock.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qresource.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsavefile.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qscopedvaluerollback.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsemaphore.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsequentialanimationgroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsettings.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsharedmemory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsignalmapper.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsignaltransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsocketnotifier.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsortfilterproxymodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstack.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstandardpaths.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstatemachine.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstorageinfo.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstringlistmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsystemsemaphore.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtemporarydir.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QScopedPointer \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtemporaryfile.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtextboundaryfinder.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtextcodec.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qthread.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qthreadpool.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qthreadstorage.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtimeline.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtimer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtimezone.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtranslator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/quuid.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qwaitcondition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qwineventnotifier.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qxmlstream.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtcoreversion.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QtGui \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QtGuiDepends \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qabstracttextdocumentlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qglyphrun.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qrawfont.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qfontdatabase.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qaccessible.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qaccessiblebridge.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qaccessibleobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qaccessibleplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qbackingstore.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QEvent \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QMargins \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QRect \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qsurface.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qsurfaceformat.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qbitmap.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qclipboard.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qdesktopservices.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qdrag.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qgenericmatrix.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qgenericplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qgenericpluginfactory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qiconengine.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qiconengineplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qimageiohandler.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qimagereader.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qimagewriter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qmatrix4x4.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qvector3d.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qvector4d.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qquaternion.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qmovie.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qoffscreensurface.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengl.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qt_windows.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/GLES3/gl3.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/GLES3/gl3platform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/KHR/khrplatform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/GLES2/gl2.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/GLES2/gl2platform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengles2ext.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglext.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglbuffer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglcontext.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QSurfaceFormat \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglversionfunctions.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengldebug.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglextrafunctions.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglfunctions.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglframebufferobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglpaintdevice.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglpixeltransferoptions.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QSharedDataPointer \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglshaderprogram.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengltexture.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengltextureblitter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QMatrix3x3 \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QMatrix4x4 \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengltimerquery.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglvertexarrayobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QPaintDeviceWindow \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpaintdevicewindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QWindow \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QPaintDevice \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QOpenGLContext \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QImage \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpagedpaintdevice.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpagelayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpagesize.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpaintengine.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpdfwriter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpicture.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpictureformatplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpixmapcache.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qrasterwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qscreen.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QList \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QSizeF \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QTransform \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qsessionmanager.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qstandarditemmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qstatictext.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qstylehints.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qsyntaxhighlighter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextdocumentfragment.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextdocumentwriter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextlist.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtexttable.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtguiversion.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qaccessiblewidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcalendarwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcheckbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcolordialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcolormap.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcolumnview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcommandlinkbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcommonstyle.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcompleter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdatawidgetmapper.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdatetimeedit.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdial.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdialogbuttonbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdirmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfileiconprovider.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdockwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdrawutil.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qerrormessage.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfilesystemmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfocusframe.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfontcombobox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfontdialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qformlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgesture.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgesturerecognizer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsanchorlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsitem.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicslayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicseffect.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsgridlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsitemanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicslinearlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicswidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsscene.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicssceneevent.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicstransform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QVector3D \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qscrollarea.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgroupbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qinputdialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qitemeditorfactory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qkeyeventtransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qkeysequenceedit.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlcdnumber.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlistview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlistwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmdiarea.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmdisubwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmenubar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmouseeventtransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qopenglwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qplaintextedit.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qprogressbar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qprogressdialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qproxystyle.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QCommonStyle \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qradiobutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qscrollbar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qscroller.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QPointF \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QScrollerProperties \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qscrollerproperties.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QMetaType \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qshortcut.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsizegrip.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qspinbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsplashscreen.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsplitter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstackedlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstackedwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstatusbar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstylefactory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstylepainter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsystemtrayicon.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtextbrowser.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtoolbar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtoolbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtoolbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtooltip.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtreeview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtreewidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtreewidgetitemiterator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qundogroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qundostack.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qundoview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qwhatsthis.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qwidgetaction.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qwizard.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgetsversion.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
+		datedelegate.h \
 		mainwindow.h \
 		debug/moc_predefs.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/bin/moc.exe
@@ -431,10 +739,10 @@ debug/moc_delegate.cpp: ../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QStyle
 		../../QT/QT5.8.0/5.8/mingw53_32/bin/moc.exe
 	E:\QT\QT5.8.0\5.8\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -IE:/QT/QT5.8.0/5.8/mingw53_32/mkspecs/win32-g++ -IE:/qt-workspace/SIMS2 -IE:/QT/QT5.8.0/5.8/mingw53_32/include -IE:/QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets -IE:/QT/QT5.8.0/5.8/mingw53_32/include/QtGui -IE:/QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE -IE:/QT/QT5.8.0/5.8/mingw53_32/include/QtCore -IE:/QT/QT5.8.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IE:/QT/QT5.8.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IE:/QT/QT5.8.0/Tools/mingw530_32/i686-w64-mingw32/include -IE:/QT/QT5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IE:/QT/QT5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IE:/QT/QT5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward delegate.h -o debug\moc_delegate.cpp
 
-debug/moc_dialog.cpp: ../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtguiglobal.h \
+debug/moc_dialog.cpp: ../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QtWidgets \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QtWidgetsDepends \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QtCore \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QtCoreDepends \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qglobal.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qconfig-bootstrapped.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qconfig.h \
@@ -457,16 +765,11 @@ debug/moc_dialog.cpp: ../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmutex.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qnumeric.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qversiontagging.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtgui-config.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgets-config.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qwidget.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qwindowdefs.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qobject.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qobjectdefs.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qnamespace.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qobjectdefs_impl.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qwindowdefs_win.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qobject.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstring.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qchar.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbytearray.h \
@@ -488,71 +791,419 @@ debug/moc_dialog.cpp: ../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qvarlengtharray.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcontainerfwd.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qobject_impl.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmargins.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpaintdevice.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qrect.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsize.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpoint.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpalette.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qcolor.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qrgb.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qrgba64.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qbrush.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qvector.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qmatrix.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpolygon.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qregion.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdatastream.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qiodevice.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qline.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtransform.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpainterpath.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qimage.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpixelformat.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpixmap.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsharedpointer.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qshareddata.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qhash.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsharedpointer_impl.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qfont.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qfontmetrics.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qfontinfo.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsizepolicy.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qcursor.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qkeysequence.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qevent.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstracteventdispatcher.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qvariant.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmap.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdebug.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qhash.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtextstream.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qiodevice.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlocale.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qshareddata.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qvector.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpoint.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qset.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcontiguouscache.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qurl.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qurlquery.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsharedpointer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractnativeeventfilter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractproxymodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractstate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstracttransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qanimationgroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qarraydataops.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qarraydatapointer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbasictimer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbitarray.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbuffer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbytearraymatcher.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcache.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcollator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcommandlineoption.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcommandlineparser.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcryptographichash.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdatastream.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdeadlinetimer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qelapsedtimer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdir.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfileinfo.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfile.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfiledevice.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdiriterator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qeasingcurve.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qendian.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qeventtransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qexception.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfactoryinterface.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfileselector.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QObject \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QStringList \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfilesystemwatcher.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfinalstate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfuture.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfutureinterface.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qrunnable.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qresultstore.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfuturesynchronizer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfuturewatcher.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qhistorystate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qidentityproxymodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qisenum.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qjsonarray.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qjsonvalue.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qjsondocument.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qjsonobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlibrary.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlibraryinfo.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qversionnumber.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qline.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlinkedlist.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlockfile.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qloggingcategory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmargins.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmath.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmessageauthenticationcode.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmetaobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmimedata.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmimedatabase.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmimetype.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qobjectcleanuphandler.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qparallelanimationgroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpauseanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpointer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpluginloader.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qprocess.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpropertyanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qvariantanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qqueue.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qreadwritelock.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qrect.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsize.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qresource.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsavefile.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qscopedvaluerollback.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsemaphore.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsequentialanimationgroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsettings.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsharedmemory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsignalmapper.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsignaltransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsocketnotifier.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsortfilterproxymodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstack.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstandardpaths.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstatemachine.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstorageinfo.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstringlistmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsystemsemaphore.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtemporarydir.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QScopedPointer \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtemporaryfile.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtextboundaryfinder.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtextcodec.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qthread.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qthreadpool.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qthreadstorage.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtimeline.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtimer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtimezone.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtranslator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qurl.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qurlquery.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/quuid.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qwaitcondition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qwineventnotifier.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qxmlstream.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtcoreversion.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QtGui \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QtGuiDepends \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtguiglobal.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtgui-config.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qabstracttextdocumentlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qcolor.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qrgb.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qrgba64.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qevent.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qwindowdefs.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qwindowdefs_win.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qregion.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qkeysequence.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qvector2d.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtouchdevice.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLineEdit \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qfont.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qbrush.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qmatrix.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpolygon.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtransform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpainterpath.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qimage.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpaintdevice.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpixelformat.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpixmap.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qglyphrun.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qrawfont.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qfontdatabase.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextdocument.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpalette.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qaccessible.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qaccessiblebridge.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qaccessibleobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qaccessibleplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qbackingstore.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QEvent \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QMargins \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QRect \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qsurface.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qsurfaceformat.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qcursor.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qbitmap.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qclipboard.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qdesktopservices.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qdrag.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qfontinfo.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qfontmetrics.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qgenericmatrix.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qgenericplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qgenericpluginfactory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qiconengine.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qiconengineplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qimageiohandler.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qimagereader.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qimagewriter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qmatrix4x4.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qvector3d.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qvector4d.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qquaternion.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qmovie.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qoffscreensurface.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengl.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qt_windows.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/GLES3/gl3.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/GLES3/gl3platform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/KHR/khrplatform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/GLES2/gl2.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/GLES2/gl2platform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengles2ext.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglext.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglbuffer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglcontext.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QSurfaceFormat \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglversionfunctions.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengldebug.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglextrafunctions.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglfunctions.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglframebufferobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglpaintdevice.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglpixeltransferoptions.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QSharedDataPointer \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglshaderprogram.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengltexture.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengltextureblitter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QMatrix3x3 \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QMatrix4x4 \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengltimerquery.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglvertexarrayobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QPaintDeviceWindow \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpaintdevicewindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QWindow \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QPaintDevice \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QOpenGLContext \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QImage \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpagedpaintdevice.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpagelayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpagesize.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpaintengine.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpainter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpdfwriter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpicture.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpictureformatplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpixmapcache.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qrasterwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qscreen.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QList \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QSize \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QSizeF \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QTransform \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qsessionmanager.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qstandarditemmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qstatictext.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qstylehints.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qsyntaxhighlighter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextdocumentfragment.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextdocumentwriter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextlist.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtexttable.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtguiversion.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgets-config.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsizepolicy.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qaccessiblewidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qaction.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcalendarwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcheckbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcolordialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcolormap.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcolumnview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcombobox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcommandlinkbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcommonstyle.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcompleter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdatawidgetmapper.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdatetimeedit.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdial.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdialogbuttonbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdirmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfileiconprovider.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdockwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdrawutil.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qerrormessage.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfiledialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfilesystemmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfocusframe.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfontcombobox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfontdialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qformlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLayout \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgesture.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgesturerecognizer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsanchorlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsitem.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicslayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicseffect.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsgridlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsitemanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicslinearlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicswidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsscene.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicssceneevent.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicstransform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QVector3D \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qscrollarea.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgroupbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qinputdialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qitemdelegate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qitemeditorfactory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qkeyeventtransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qkeysequenceedit.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlcdnumber.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlistview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlistwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmainwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmdiarea.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmdisubwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmenu.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmenubar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmessagebox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmouseeventtransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qopenglwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QWidget \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qplaintextedit.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtextedit.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qprogressbar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qprogressdialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qproxystyle.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QCommonStyle \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qradiobutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qscrollbar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qscroller.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QPointF \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QScrollerProperties \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qscrollerproperties.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QMetaType \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qshortcut.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsizegrip.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qspinbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsplashscreen.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsplitter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstackedlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstackedwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstatusbar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleditemdelegate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstylefactory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstylepainter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsystemtrayicon.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtableview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtablewidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtextbrowser.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtoolbar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtoolbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtoolbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtooltip.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtreeview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtreewidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtreewidgetitemiterator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qundogroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qundostack.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qundoview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qwhatsthis.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qwidgetaction.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qwizard.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgetsversion.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLineEdit \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
 		dialog.h \
 		debug/moc_predefs.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/bin/moc.exe
 	E:\QT\QT5.8.0\5.8\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -IE:/QT/QT5.8.0/5.8/mingw53_32/mkspecs/win32-g++ -IE:/qt-workspace/SIMS2 -IE:/QT/QT5.8.0/5.8/mingw53_32/include -IE:/QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets -IE:/QT/QT5.8.0/5.8/mingw53_32/include/QtGui -IE:/QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE -IE:/QT/QT5.8.0/5.8/mingw53_32/include/QtCore -IE:/QT/QT5.8.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IE:/QT/QT5.8.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IE:/QT/QT5.8.0/Tools/mingw530_32/i686-w64-mingw32/include -IE:/QT/QT5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IE:/QT/QT5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IE:/QT/QT5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward dialog.h -o debug\moc_dialog.cpp
+
+debug/moc_datedelegate.cpp: datedelegate.h \
+		debug/moc_predefs.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/bin/moc.exe
+	E:\QT\QT5.8.0\5.8\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -IE:/QT/QT5.8.0/5.8/mingw53_32/mkspecs/win32-g++ -IE:/qt-workspace/SIMS2 -IE:/QT/QT5.8.0/5.8/mingw53_32/include -IE:/QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets -IE:/QT/QT5.8.0/5.8/mingw53_32/include/QtGui -IE:/QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE -IE:/QT/QT5.8.0/5.8/mingw53_32/include/QtCore -IE:/QT/QT5.8.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IE:/QT/QT5.8.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IE:/QT/QT5.8.0/Tools/mingw530_32/i686-w64-mingw32/include -IE:/QT/QT5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IE:/QT/QT5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IE:/QT/QT5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward datedelegate.h -o debug\moc_datedelegate.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -733,6 +1384,8 @@ debug/main.o: main.cpp mainwindow.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QVector \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QComboBox \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcombobox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLineEdit \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
 		studentdatabase.h \
 		student.h \
 		delegate.h \
@@ -744,21 +1397,315 @@ debug/main.o: main.cpp mainwindow.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QPainter \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpainter.h \
 		dialog.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLineEdit \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QtWidgets \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QtWidgetsDepends \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QtCore \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QtCoreDepends \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstracteventdispatcher.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractnativeeventfilter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractproxymodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractstate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstracttransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qanimationgroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qarraydataops.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qarraydatapointer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbasictimer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbitarray.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbuffer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbytearraymatcher.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcache.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcollator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcommandlineoption.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcommandlineparser.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcryptographichash.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdeadlinetimer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qelapsedtimer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdiriterator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qeasingcurve.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qendian.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qeventtransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qexception.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfactoryinterface.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfileselector.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfilesystemwatcher.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfinalstate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfuture.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfutureinterface.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qrunnable.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qresultstore.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfuturesynchronizer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfuturewatcher.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qhistorystate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qidentityproxymodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qisenum.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qjsonarray.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qjsonvalue.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qjsondocument.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qjsonobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlibrary.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlibraryinfo.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qversionnumber.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlinkedlist.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlockfile.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qloggingcategory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmath.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmessageauthenticationcode.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmetaobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmimedata.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmimedatabase.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmimetype.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qobjectcleanuphandler.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qparallelanimationgroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpauseanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpointer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpluginloader.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qprocess.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpropertyanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qvariantanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qqueue.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qreadwritelock.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qresource.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsavefile.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qscopedvaluerollback.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsemaphore.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsequentialanimationgroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsettings.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsharedmemory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsignalmapper.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsignaltransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsocketnotifier.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsortfilterproxymodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstack.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstandardpaths.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstatemachine.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstorageinfo.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstringlistmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsystemsemaphore.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtemporarydir.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QScopedPointer \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtemporaryfile.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtextboundaryfinder.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtextcodec.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qthread.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qthreadpool.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qthreadstorage.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtimeline.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtimer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtimezone.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtranslator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/quuid.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qwaitcondition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qwineventnotifier.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qxmlstream.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtcoreversion.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QtGui \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QtGuiDepends \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qabstracttextdocumentlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qglyphrun.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qrawfont.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qfontdatabase.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qaccessible.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qaccessiblebridge.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qaccessibleobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qaccessibleplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qbackingstore.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QEvent \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QMargins \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QRect \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qsurface.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qsurfaceformat.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qbitmap.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qclipboard.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qdesktopservices.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qdrag.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qgenericmatrix.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qgenericplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qgenericpluginfactory.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qiconengine.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qiconengineplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qimageiohandler.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qimagereader.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qimagewriter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qmatrix4x4.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qvector3d.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qvector4d.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qquaternion.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qmovie.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qoffscreensurface.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengl.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qt_windows.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/GLES3/gl3.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/GLES3/gl3platform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/KHR/khrplatform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/GLES2/gl2.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/GLES2/gl2platform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengles2ext.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglext.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglbuffer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglcontext.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QSurfaceFormat \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglversionfunctions.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengldebug.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglextrafunctions.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglfunctions.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglframebufferobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglpaintdevice.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglpixeltransferoptions.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QSharedDataPointer \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglshaderprogram.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengltexture.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengltextureblitter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QMatrix3x3 \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QMatrix4x4 \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengltimerquery.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglvertexarrayobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QPaintDeviceWindow \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpaintdevicewindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QWindow \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QPaintDevice \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QOpenGLContext \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QImage \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpagedpaintdevice.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpagelayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpagesize.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpaintengine.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpdfwriter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpicture.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpictureformatplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpixmapcache.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qrasterwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qscreen.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QList \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QSizeF \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QTransform \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qsessionmanager.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qstandarditemmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qstatictext.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qstylehints.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qsyntaxhighlighter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextdocumentfragment.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextdocumentwriter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextlist.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtexttable.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtguiversion.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qaccessiblewidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcalendarwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcheckbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcolordialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcolormap.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcolumnview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcommandlinkbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcommonstyle.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcompleter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdatawidgetmapper.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdatetimeedit.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdial.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdialogbuttonbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdirmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfileiconprovider.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdockwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdrawutil.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qerrormessage.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfilesystemmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfocusframe.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfontcombobox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfontdialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qformlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgesture.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgesturerecognizer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsanchorlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsitem.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicslayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicseffect.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsgridlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsitemanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicslinearlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicswidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsscene.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicssceneevent.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicstransform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QVector3D \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qscrollarea.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgroupbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qinputdialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qitemeditorfactory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qkeyeventtransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qkeysequenceedit.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlcdnumber.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlistview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlistwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmdiarea.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmdisubwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmenubar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmouseeventtransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qopenglwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qplaintextedit.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qprogressbar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qprogressdialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qproxystyle.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QCommonStyle \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qradiobutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qscrollbar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qscroller.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QPointF \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QScrollerProperties \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qscrollerproperties.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QMetaType \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qshortcut.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsizegrip.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qspinbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsplashscreen.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsplitter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstackedlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstackedwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstatusbar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstylefactory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstylepainter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsystemtrayicon.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtextbrowser.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtoolbar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtoolbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtoolbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtooltip.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtreeview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtreewidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtreewidgetitemiterator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qundogroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qundostack.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qundoview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qwhatsthis.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qwidgetaction.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qwizard.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgetsversion.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
+		datedelegate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o main.cpp
 
 debug/mainwindow.o: mainwindow.cpp mainwindow.h \
@@ -919,6 +1866,8 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QVector \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QComboBox \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcombobox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLineEdit \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
 		studentdatabase.h \
 		student.h \
 		delegate.h \
@@ -930,33 +1879,321 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QPainter \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpainter.h \
 		dialog.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLineEdit \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
-		ui_mainwindow.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QtWidgets \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QtWidgetsDepends \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QtCore \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QtCoreDepends \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstracteventdispatcher.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractnativeeventfilter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractproxymodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractstate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstracttransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qanimationgroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qarraydataops.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qarraydatapointer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbasictimer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbitarray.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbuffer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbytearraymatcher.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcache.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcollator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcommandlineoption.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcommandlineparser.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcryptographichash.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdeadlinetimer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qelapsedtimer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdiriterator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qeasingcurve.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qendian.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qeventtransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qexception.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfactoryinterface.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfileselector.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfilesystemwatcher.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfinalstate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfuture.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfutureinterface.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qrunnable.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qresultstore.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfuturesynchronizer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfuturewatcher.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qhistorystate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qidentityproxymodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qisenum.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qjsonarray.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qjsonvalue.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qjsondocument.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qjsonobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlibrary.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlibraryinfo.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qversionnumber.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlinkedlist.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlockfile.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qloggingcategory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmath.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmessageauthenticationcode.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmetaobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmimedata.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmimedatabase.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmimetype.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qobjectcleanuphandler.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qparallelanimationgroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpauseanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpointer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpluginloader.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qprocess.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpropertyanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qvariantanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qqueue.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qreadwritelock.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qresource.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsavefile.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qscopedvaluerollback.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsemaphore.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsequentialanimationgroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsettings.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsharedmemory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsignalmapper.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsignaltransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsocketnotifier.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsortfilterproxymodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstack.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstandardpaths.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstatemachine.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstorageinfo.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstringlistmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsystemsemaphore.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtemporarydir.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QScopedPointer \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtemporaryfile.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtextboundaryfinder.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtextcodec.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qthread.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qthreadpool.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qthreadstorage.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtimeline.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtimer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtimezone.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtranslator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/quuid.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qwaitcondition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qwineventnotifier.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qxmlstream.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtcoreversion.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QtGui \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QtGuiDepends \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qabstracttextdocumentlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qglyphrun.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qrawfont.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qfontdatabase.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qaccessible.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qaccessiblebridge.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qaccessibleobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qaccessibleplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qbackingstore.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QEvent \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QMargins \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QRect \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qsurface.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qsurfaceformat.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qbitmap.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qclipboard.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qdesktopservices.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qdrag.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qgenericmatrix.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qgenericplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qgenericpluginfactory.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qiconengine.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qiconengineplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qimageiohandler.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qimagereader.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qimagewriter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qmatrix4x4.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qvector3d.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qvector4d.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qquaternion.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qmovie.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qoffscreensurface.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengl.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qt_windows.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/GLES3/gl3.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/GLES3/gl3platform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/KHR/khrplatform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/GLES2/gl2.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/GLES2/gl2platform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengles2ext.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglext.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglbuffer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglcontext.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QSurfaceFormat \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglversionfunctions.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengldebug.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglextrafunctions.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglfunctions.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglframebufferobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglpaintdevice.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglpixeltransferoptions.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QSharedDataPointer \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglshaderprogram.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengltexture.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengltextureblitter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QMatrix3x3 \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QMatrix4x4 \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengltimerquery.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglvertexarrayobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QPaintDeviceWindow \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpaintdevicewindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QWindow \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QPaintDevice \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QOpenGLContext \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QImage \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpagedpaintdevice.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpagelayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpagesize.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpaintengine.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpdfwriter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpicture.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpictureformatplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpixmapcache.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qrasterwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qscreen.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QList \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QSizeF \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QTransform \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qsessionmanager.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qstandarditemmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qstatictext.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qstylehints.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qsyntaxhighlighter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextdocumentfragment.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextdocumentwriter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextlist.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtexttable.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtguiversion.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qaccessiblewidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QHeaderView \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcalendarwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcheckbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcolordialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcolormap.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcolumnview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcommandlinkbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcommonstyle.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcompleter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdatawidgetmapper.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdatetimeedit.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdial.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdialogbuttonbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdirmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfileiconprovider.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdockwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdrawutil.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qerrormessage.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfilesystemmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfocusframe.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfontcombobox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfontdialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qformlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgesture.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgesturerecognizer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsanchorlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsitem.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicslayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicseffect.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsgridlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsitemanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicslinearlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicswidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsscene.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicssceneevent.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicstransform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QVector3D \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qscrollarea.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgroupbox.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QMenuBar \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qinputdialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qitemeditorfactory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qkeyeventtransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qkeysequenceedit.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlcdnumber.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlistview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlistwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmdiarea.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmdisubwindow.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmenubar.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QStatusBar \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmouseeventtransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qopenglwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qplaintextedit.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qprogressbar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qprogressdialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qproxystyle.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QCommonStyle \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qradiobutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qscrollbar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qscroller.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QPointF \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QScrollerProperties \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qscrollerproperties.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QMetaType \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qshortcut.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsizegrip.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qspinbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsplashscreen.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsplitter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstackedlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstackedwidget.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstatusbar.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QToolBar \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstylefactory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstylepainter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsystemtrayicon.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtextbrowser.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtoolbar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtoolbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtoolbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtooltip.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtreeview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtreewidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtreewidgetitemiterator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qundogroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qundostack.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qundoview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qwhatsthis.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qwidgetaction.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qwizard.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgetsversion.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
+		datedelegate.h \
+		ui_mainwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QHeaderView \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QMenuBar \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QStatusBar \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QToolBar \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o mainwindow.cpp
 
@@ -1097,10 +2334,10 @@ debug/delegate.o: delegate.cpp Delegate.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\delegate.o delegate.cpp
 
 debug/dialog.o: dialog.cpp dialog.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtguiglobal.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QtWidgets \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QtWidgetsDepends \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QtCore \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QtCoreDepends \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qglobal.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qconfig-bootstrapped.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qconfig.h \
@@ -1123,16 +2360,11 @@ debug/dialog.o: dialog.cpp dialog.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmutex.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qnumeric.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qversiontagging.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtgui-config.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgets-config.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qwidget.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qwindowdefs.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qobject.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qobjectdefs.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qnamespace.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qobjectdefs_impl.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qwindowdefs_win.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qobject.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstring.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qchar.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbytearray.h \
@@ -1154,68 +2386,414 @@ debug/dialog.o: dialog.cpp dialog.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qvarlengtharray.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcontainerfwd.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qobject_impl.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmargins.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpaintdevice.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qrect.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsize.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpoint.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpalette.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qcolor.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qrgb.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qrgba64.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qbrush.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qvector.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qmatrix.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpolygon.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qregion.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdatastream.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qiodevice.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qline.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtransform.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpainterpath.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qimage.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpixelformat.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpixmap.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsharedpointer.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qshareddata.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qhash.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsharedpointer_impl.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qfont.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qfontmetrics.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qfontinfo.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsizepolicy.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qcursor.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qkeysequence.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qevent.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstracteventdispatcher.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qvariant.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmap.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdebug.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qhash.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtextstream.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qiodevice.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlocale.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qshareddata.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qvector.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpoint.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qset.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcontiguouscache.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qurl.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qurlquery.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsharedpointer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractnativeeventfilter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractproxymodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstractstate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qabstracttransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qanimationgroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qarraydataops.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qarraydatapointer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbasictimer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbitarray.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbuffer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qbytearraymatcher.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcache.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcollator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcommandlineoption.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcommandlineparser.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qcryptographichash.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdatastream.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdeadlinetimer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qelapsedtimer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdir.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfileinfo.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfile.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfiledevice.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qdiriterator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qeasingcurve.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qendian.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qeventtransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qexception.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfactoryinterface.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfileselector.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QObject \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QStringList \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfilesystemwatcher.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfinalstate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfuture.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfutureinterface.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qrunnable.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qresultstore.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfuturesynchronizer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qfuturewatcher.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qhistorystate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qidentityproxymodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qisenum.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qjsonarray.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qjsonvalue.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qjsondocument.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qjsonobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlibrary.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlibraryinfo.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qversionnumber.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qline.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlinkedlist.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qlockfile.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qloggingcategory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmargins.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmath.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmessageauthenticationcode.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmetaobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmimedata.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmimedatabase.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qmimetype.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qobjectcleanuphandler.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qparallelanimationgroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpauseanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpointer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpluginloader.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qprocess.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qpropertyanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qvariantanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qqueue.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qreadwritelock.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qrect.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsize.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qresource.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsavefile.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qscopedvaluerollback.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsemaphore.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsequentialanimationgroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsettings.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsharedmemory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsignalmapper.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsignaltransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsocketnotifier.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsortfilterproxymodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstack.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstandardpaths.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstatemachine.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstorageinfo.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qstringlistmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qsystemsemaphore.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtemporarydir.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QScopedPointer \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtemporaryfile.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtextboundaryfinder.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtextcodec.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qthread.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qthreadpool.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qthreadstorage.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtimeline.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtimer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtimezone.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtranslator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qurl.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qurlquery.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/quuid.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qwaitcondition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qwineventnotifier.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qxmlstream.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qtcoreversion.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QtGui \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QtGuiDepends \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtguiglobal.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtgui-config.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qabstracttextdocumentlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qcolor.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qrgb.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qrgba64.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qevent.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qwindowdefs.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qwindowdefs_win.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qregion.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qkeysequence.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qvector2d.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtouchdevice.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLineEdit \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qfont.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qbrush.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qmatrix.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpolygon.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtransform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpainterpath.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qimage.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpaintdevice.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpixelformat.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpixmap.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qglyphrun.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qrawfont.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qfontdatabase.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextdocument.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpalette.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qaccessible.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qaccessiblebridge.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qaccessibleobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qaccessibleplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qbackingstore.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QEvent \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QMargins \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QRect \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qsurface.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qsurfaceformat.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qcursor.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qbitmap.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qclipboard.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qdesktopservices.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qdrag.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qfontinfo.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qfontmetrics.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qgenericmatrix.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qgenericplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qgenericpluginfactory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qiconengine.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qiconengineplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qimageiohandler.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qimagereader.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qimagewriter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qmatrix4x4.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qvector3d.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qvector4d.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qquaternion.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qmovie.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qoffscreensurface.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengl.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/qt_windows.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/GLES3/gl3.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/GLES3/gl3platform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/KHR/khrplatform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/GLES2/gl2.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtANGLE/GLES2/gl2platform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengles2ext.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglext.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglbuffer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglcontext.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QSurfaceFormat \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglversionfunctions.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengldebug.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglextrafunctions.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglfunctions.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglframebufferobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglpaintdevice.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglpixeltransferoptions.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QSharedDataPointer \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglshaderprogram.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengltexture.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengltextureblitter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QMatrix3x3 \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QMatrix4x4 \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopengltimerquery.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglvertexarrayobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qopenglwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QPaintDeviceWindow \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpaintdevicewindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QWindow \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QPaintDevice \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QOpenGLContext \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QImage \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpagedpaintdevice.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpagelayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpagesize.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpaintengine.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpainter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpdfwriter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpicture.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpictureformatplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qpixmapcache.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qrasterwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qscreen.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QList \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QSize \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QSizeF \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QTransform \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qsessionmanager.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qstandarditemmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qstatictext.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qstylehints.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qsyntaxhighlighter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextobject.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextdocumentfragment.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextdocumentwriter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtextlist.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtexttable.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/qtguiversion.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgets-config.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsizepolicy.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qaccessiblewidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qaction.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
 		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcalendarwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcheckbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcolordialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcolormap.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcolumnview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcombobox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcommandlinkbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcommonstyle.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qcompleter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdatawidgetmapper.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdatetimeedit.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdial.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdialogbuttonbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdirmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfileiconprovider.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdockwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qdrawutil.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qerrormessage.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfiledialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfilesystemmodel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfocusframe.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfontcombobox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qfontdialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qformlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLayout \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgesture.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgesturerecognizer.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsanchorlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsitem.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicslayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicseffect.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsgridlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsitemanimation.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicslinearlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsproxywidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicswidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsscene.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicssceneevent.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicstransform.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtGui/QVector3D \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgraphicsview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qscrollarea.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qgroupbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qinputdialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qitemdelegate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qitemeditorfactory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qkeyeventtransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qkeysequenceedit.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlcdnumber.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlistview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qlistwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmainwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmdiarea.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmdisubwindow.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmenu.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmenubar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmessagebox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qmouseeventtransition.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qopenglwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QWidget \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qplaintextedit.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtextedit.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qprogressbar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qprogressdialog.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qproxystyle.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QCommonStyle \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qradiobutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qscrollbar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qscroller.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QPointF \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QScrollerProperties \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qscrollerproperties.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QMetaType \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qshortcut.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsizegrip.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qspinbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsplashscreen.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsplitter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstackedlayout.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstackedwidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstatusbar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleditemdelegate.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstylefactory.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstylepainter.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleplugin.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qsystemtrayicon.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtableview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtablewidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtextbrowser.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtoolbar.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtoolbox.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtoolbutton.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtooltip.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtreeview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtreewidget.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtreewidgetitemiterator.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qundogroup.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qundostack.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qundoview.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qwhatsthis.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qwidgetaction.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qwizard.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgetsversion.h \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QLineEdit \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
+		../../QT/QT5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\dialog.o dialog.cpp
+
+debug/datedelegate.o: datedelegate.cpp datedelegate.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\datedelegate.o datedelegate.cpp
 
 debug/moc_mainwindow.o: debug/moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_mainwindow.o debug\moc_mainwindow.cpp
@@ -1225,6 +2803,9 @@ debug/moc_delegate.o: debug/moc_delegate.cpp
 
 debug/moc_dialog.o: debug/moc_dialog.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_dialog.o debug\moc_dialog.cpp
+
+debug/moc_datedelegate.o: debug/moc_datedelegate.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_datedelegate.o debug\moc_datedelegate.cpp
 
 ####### Install
 

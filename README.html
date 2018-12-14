@@ -1,0 +1,432 @@
+<!DOCTYPE html><html><head>
+      <title>README</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///C:\Users\13668\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.3.11\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+      <style> 
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+ 
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview   ">
+      <h1 class="mume-header" id="%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F">&#x5B66;&#x751F;&#x4FE1;&#x606F;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;</h1>
+
+<p>&#x5218;&#x6F47;&#x8FDC;<br>
+161220083<br>
+&#x5357;&#x4EAC;&#x5927;&#x5B66;&#x8BA1;&#x7B97;&#x673A;&#x7CFB;<br>
+&#x5927;&#x4E09;&#x672C;&#x79D1;&#x751F;</p>
+<h2 class="mume-header" id="%E4%B8%80-%E7%B3%BB%E7%BB%9F%E6%8C%87%E5%8D%97">&#x4E00;&#x3001;&#x7CFB;&#x7EDF;&#x6307;&#x5357;</h2>
+
+<p>&#x672C;&#x7CFB;&#x7EDF;&#x4E3A;&#x8868;&#x683C;&#x5F0F;&#x7684;&#x5B66;&#x751F;&#x4FE1;&#x606F;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x6587;&#x4EF6;&#x65B0;&#x5EFA;&#x3001;&#x6253;&#x5F00;&#x53CA;&#x4FDD;&#x5B58;&#x529F;&#x80FD;&#xFF0C;&#x8FD8;&#x53EF;&#x5728;&#x8868;&#x683C;&#x4E2D;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x589E;&#x52A0;&#x3001;&#x5220;&#x9664;&#x3001;&#x4FEE;&#x6539;&#x3001;&#x641C;&#x7D22;&#xFF0C;&#x4E0B;&#x9762;&#x5C06;&#x4E00;&#x4E00;&#x4ECB;&#x7ECD;&#x8FD9;&#x4E9B;&#x529F;&#x80FD;<br>
+<img src="1.png" alt=""></p>
+<h3 class="mume-header" id="1-%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6">1&#x3001;&#x65B0;&#x5EFA;&#x6587;&#x4EF6;</h3>
+
+<p>&#x65B0;&#x5EFA;&#x6587;&#x4EF6;&#x5C06;&#x4F1A;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x5168;&#x65B0;&#x7684;&#x7A7A;&#x8868;&#x683C;&#xFF0C;&#x5728;&#x65B0;&#x5EFA;&#x6587;&#x4EF6;&#x65F6;&#xFF0C;&#x5F53;&#x524D;&#x8868;&#x683C;&#x7684;&#x5185;&#x5BB9;&#x5C06;&#x4F1A;&#x88AB;&#x5220;&#x9664;&#xFF0C;&#x7CFB;&#x7EDF;&#x4F1A;&#x81EA;&#x52A8;&#x68C0;&#x6D4B;&#x5F53;&#x524D;&#x8868;&#x683C;&#x5185;&#x5BB9;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x88AB;&#x4FDD;&#x5B58;&#x8FC7;&#xFF0C;&#x5982;&#x679C;&#x672A;&#x4FDD;&#x5B58;&#x8FC7;&#x7684;&#xFF0C;&#x4F1A;&#x5BF9;&#x7528;&#x6237;&#x8FDB;&#x884C;&#x63D0;&#x793A;&#xFF1B;&#x5426;&#x5219;&#x5C06;&#x76F4;&#x63A5;&#x751F;&#x6210;&#x65B0;&#x8868;&#x683C;</p>
+<h3 class="mume-header" id="2-%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6">2&#x3001;&#x6253;&#x5F00;&#x6587;&#x4EF6;</h3>
+
+<p>&#x7CFB;&#x7EDF;&#x53EF;&#x4EE5;&#x6253;&#x5F00;&#x7531;&#x7CFB;&#x7EDF;&#x4FDD;&#x5B58;&#x7684;&#x3001;&#x7B26;&#x5408;&#x7CFB;&#x7EDF;&#x89C4;&#x8303;&#x7684;.csv&#x6587;&#x4EF6;&#x3002;</p>
+<h3 class="mume-header" id="3-%E4%BF%9D%E5%AD%98%E6%96%87%E4%BB%B6">3&#x3001;&#x4FDD;&#x5B58;&#x6587;&#x4EF6;</h3>
+
+<p>&#x7CFB;&#x7EDF;&#x5C06;&#x5F53;&#x524D;&#x8868;&#x683C;&#x4FDD;&#x5B58;&#x4E3A;**.csv<em>&#x6587;&#x4EF6;&#x3002;&#x4E4B;&#x6240;&#x4EE5;&#x4FDD;&#x5B58;&#x4E3A;**.csv</em>&#x6587;&#x4EF6;&#xFF0C;&#x9664;&#x4E86;&#x8003;&#x8651;&#x5230;&#x8FD9;&#x79CD;&#x6587;&#x4EF6;&#x5177;&#x6709;&#x975E;&#x5E38;&#x89C4;&#x6574;&#x7684;&#x6A21;&#x5F0F;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x8003;&#x8651;&#x5230;&#x8BE5;&#x683C;&#x5F0F;&#x53EF;&#x4F7F;&#x7528;&#x5FAE;&#x8F6F;<em>excel</em>&#x8868;&#x683C;&#x6253;&#x5F00;&#xFF0C;&#x4FBF;&#x4E8E;&#x5B9E;&#x9645;&#x573A;&#x666F;&#x4E2D;&#x7684;&#x4F7F;&#x7528;&#x3002;</p>
+<h3 class="mume-header" id="4-%E5%A2%9E%E5%8A%A0">4&#x3001;&#x589E;&#x52A0;</h3>
+
+<p>&#x5728;&#x7CFB;&#x7EDF;&#x83DC;&#x5355;&#x680F;&#x7F16;&#x8F91;&#x9879;&#x4E2D;&#x548C;&#x7CFB;&#x7EDF;&#x53F3;&#x952E;&#x83DC;&#x5355;&#x4E2D;&#xFF0C;&#x6709;&#x4E09;&#x79CD;&#x65B9;&#x5F0F;&#x5BF9;&#x8868;&#x683C;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x589E;&#x52A0;&#xFF0C;&#x5206;&#x522B;&#x662F;&#x201C;&#x589E;&#x52A0;&#x4E00;&#x884C;&#x201D;&#xFF0C;&#x201C;&#x4E0A;&#x65B9;&#x63D2;&#x5165;&#x4E00;&#x884C;&#x201D;&#x548C;&#x201C;&#x4E0B;&#x65B9;&#x63D2;&#x5165;&#x4E00;&#x884C;&#x201D;&#x3002;<br>
+&#x70B9;&#x51FB;&#x201C;&#x589E;&#x52A0;&#x4E00;&#x884C;&#x201D;&#xFF0C;&#x4F1A;&#x5728;&#x8868;&#x683C;&#x672B;&#x5C3E;&#x751F;&#x6210;&#x4E00;&#x884C;&#x7A7A;&#x884C;&#x3002;<br>
+&#x70B9;&#x51FB;&#x201C;&#x4E0A;&#x65B9;&#x63D2;&#x5165;&#x4E00;&#x884C;&#x201D;&#xFF0C;&#x4F1A;&#x5728;&#x5F53;&#x524D;&#x9009;&#x4E2D;&#x8868;&#x683C;&#x7684;&#x4E0A;&#x65B9;&#x63D2;&#x5165;&#x4E00;&#x884C;&#x7A7A;&#x884C;&#x3002;<br>
+&#x70B9;&#x51FB;&#x201C;&#x4E0B;&#x65B9;&#x63D2;&#x5165;&#x4E00;&#x884C;&#x201D;&#xFF0C;&#x4F1A;&#x5728;&#x5F53;&#x524D;&#x9009;&#x4E2D;&#x8868;&#x683C;&#x7684;&#x4E0B;&#x65B9;&#x63D2;&#x5165;&#x4E00;&#x884C;&#x7A7A;&#x884C;&#x3002;<br>
+<img src="9.png" alt=""><br>
+<img src="8.png" alt=""></p>
+<h3 class="mume-header" id="5-%E5%88%A0%E9%99%A4">5&#x3001;&#x5220;&#x9664;</h3>
+
+<p>&#x5728;&#x7CFB;&#x7EDF;&#x83DC;&#x5355;&#x680F;&#x7F16;&#x8F91;&#x9879;&#x4E2D;&#x548C;&#x7CFB;&#x7EDF;&#x53F3;&#x952E;&#x83DC;&#x5355;&#x4E2D;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x201C;&#x5220;&#x9664;&#x201D;&#x9009;&#x9879;&#x3002;<br>
+&#x70B9;&#x51FB;&#x5220;&#x9664;&#x9009;&#x9879;&#x4E4B;&#x540E;&#xFF0C;&#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x884C;&#x4F1A;&#x88AB;&#x5220;&#x9664;&#x6389;&#x3002;</p>
+<h3 class="mume-header" id="6-%E4%BF%AE%E6%94%B9">6&#x3001;&#x4FEE;&#x6539;</h3>
+
+<p>&#x53CC;&#x51FB;&#x8868;&#x9879;&#x5373;&#x53EF;&#x8FDB;&#x5165;&#x7F16;&#x8F91;&#x6A21;&#x5F0F;&#xFF0C;&#x5BF9;&#x8868;&#x683C;&#x5185;&#x5BB9;&#x8FDB;&#x884C;&#x7F16;&#x8F91;&#x3002;&#x5176;&#x4E2D;&#x6027;&#x522B;&#x3001;&#x4E13;&#x4E1A;&#x548C;&#x51FA;&#x751F;&#x65E5;&#x671F;&#x680F;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x4E0B;&#x62C9;&#x9009;&#x62E9;&#x9879;&#xFF0C;&#x4FBF;&#x4E8E;&#x4F7F;&#x7528;&#x8005;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x7F16;&#x8F91;&#x3002;<br>
+<img src="2.png" alt=""><br>
+<img src="3.png" alt=""><br>
+<img src="4.png" alt=""></p>
+<h3 class="mume-header" id="7-%E6%90%9C%E7%B4%A2">7&#x3001;&#x641C;&#x7D22;</h3>
+
+<p>&#x7CFB;&#x7EDF;&#x5DE5;&#x5177;&#x680F;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x641C;&#x7D22;&#x6587;&#x672C;&#x6846;&#xFF0C;&#x7528;&#x6237;&#x53EA;&#x9700;&#x8981;&#x5728;&#x6846;&#x4E2D;&#x8F93;&#x5165;&#x641C;&#x7D22;&#x5185;&#x5BB9;&#xFF0C;&#x4E4B;&#x540E;&#x70B9;&#x51FB;&#x7A97;&#x53E3;&#x53F3;&#x8FB9;&#x7684;&#x201C;&#x641C;&#x7D22;&#x201D;&#x6309;&#x94AE;&#x5373;&#x53EF;&#x8FDB;&#x884C;&#x641C;&#x7D22;&#x3002;&#x9664;&#x4E86;&#x641C;&#x7D22;&#x6309;&#x94AE;&#x4EE5;&#x5916;&#xFF0C;&#x8FD8;&#x6709;&#x201C;&#x4E0A;&#x4E00;&#x4E2A;&#x201D;&#x548C;&#x201C;&#x4E0B;&#x4E00;&#x4E2A;&#x201D;&#x6309;&#x94AE;&#xFF0C;&#x7528;&#x4EE5;&#x7EE7;&#x7EED;&#x67E5;&#x8BE2;&#x3002;<br>
+<img src="5.png" alt=""><br>
+<img src="6.png" alt=""><br>
+<img src="7.png" alt=""></p>
+<h3 class="mume-header" id="8-%E6%8E%92%E5%BA%8F">8&#x3001;&#x6392;&#x5E8F;</h3>
+
+<p>&#x82E5;&#x8981;&#x6309;&#x7167;&#x67D0;&#x4E2A;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x53CC;&#x51FB;&#x8BE5;&#x5C5E;&#x6027;&#x8868;&#x5934;&#x5373;&#x53EF;&#x3002;&#x9996;&#x6B21;&#x70B9;&#x51FB;&#x6309;&#x7167;&#x5B57;&#x7B26;&#x6B63;&#x5E8F;&#x6309;&#x8BE5;&#x5217;&#x5BF9;&#x8868;&#x683C;&#x8FDB;&#x884C;&#x6269;&#x5C55;&#x6392;&#x5E8F;&#xFF0C;&#x518D;&#x6B21;&#x70B9;&#x51FB;&#x8FDB;&#x884C;&#x5012;&#x5E8F;&#x6392;&#x5E8F;&#xFF0C;&#x518D;&#x6B21;&#x70B9;&#x51FB;&#x53C8;&#x53D8;&#x4E3A;&#x6B63;&#x5E8F;&#x6392;&#x5E8F;&#xFF0C;&#x4EE5;&#x6B64;&#x7C7B;&#x63A8;&#x3002;&#x641C;&#x7D22;&#x4EC5;&#x652F;&#x6301;&#x7CBE;&#x786E;&#x641C;&#x7D22;&#xFF0C;&#x4E0D;&#x652F;&#x6301;&#x6A21;&#x7CCA;&#x641C;&#x7D22;&#x3002;<br>
+<img src="10.png" alt=""></p>
+<h2 class="mume-header" id="%E4%BA%8C-%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0">&#x4E8C;&#x3001;&#x7CFB;&#x7EDF;&#x5B9E;&#x73B0;</h2>
+
+<p>&#x672C;&#x7CFB;&#x7EDF;&#x4E3B;&#x8981;&#x7531;&#x4E09;&#x4E2A;&#x7EE7;&#x627F;&#x7C7B;&#x6784;&#x6210;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;<em>MianWindow</em>&#x7C7B;&#xFF0C;&#x5B83;&#x7EE7;&#x627F;&#x81EA;<em>QMainWindow</em>&#x7C7B;&#xFF0C;&#x662F;&#x7CFB;&#x7EDF;&#x7684;&#x4E3B;&#x8981;&#x90E8;&#x5206;&#xFF0C;&#x53E6;&#x5916;&#x4E24;&#x4E2A;&#x7C7B;&#x4E3A;<em>Delegate</em>&#x548C;<em>DateDelegate</em>&#x7C7B;&#xFF0C;&#x5B83;&#x4EEC;&#x90FD;&#x7EE7;&#x627F;&#x81EA;<em>QItemDelegate</em>&#x7C7B;&#xFF0C;&#x7528;&#x4EE5;&#x5B9E;&#x73B0;&#x8868;&#x9879;&#x4E2D;&#x7684;&#x4E0B;&#x62C9;&#x9009;&#x9879;&#xFF0C;&#x524D;&#x8005;&#x5B9E;&#x73B0;&#x4E86;&#x6027;&#x522B;&#x548C;&#x4E13;&#x4E1A;&#x65B9;&#x5411;&#x4E0B;&#x62C9;&#x9009;&#x9879;&#xFF0C;&#x540E;&#x8005;&#x5B9E;&#x73B0;&#x4E86;&#x51FA;&#x751F;&#x65E5;&#x671F;&#x7684;&#x4E0B;&#x62C9;&#x9009;&#x9879;&#x3002;<br>
+<em>MainWindow</em>&#x7C7B;&#x4E2D;&#x8FD8;&#x96C6;&#x6210;&#x4E86;<em>QAction</em>&#x7C7B;&#x3001;<em>QWidget</em>&#x7C7B;&#x3001;<em>QLayout</em>&#x7C7B;&#x3001;<em>QTableWidget</em>&#x7C7B;&#x3001;<em>QLineEdit</em>&#x7C7B;&#x3001;<em>QPushButton</em>&#x7C7B;&#x3001;<em>QString</em>&#x7C7B;&#x3002;<strong><em>&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x7CFB;&#x7EDF;&#x4E2D;&#x51FA;&#x73B0;&#x7684;&#x5176;&#x4ED6;Qt&#x7C7B;&#xFF0C;&#x4EE5;&#x53CA;dialog.cpp&#x3001;student.cpp&#x3001;studentdatabase.cpp&#x548C;&#x4ED6;&#x4EEC;&#x5BF9;&#x5E94;&#x7684;&#x5934;&#x6587;&#x4EF6;&#x4E2D;&#x5C01;&#x88C5;&#x7684;&#x7C7B;&#xFF0C;&#x4EC5;&#x4E3A;&#x7CFB;&#x7EDF;&#x5B9E;&#x73B0;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x9057;&#x4EA7;&#x4EE3;&#x7801;&#xFF0C;&#x5728;&#x7CFB;&#x7EDF;&#x4E2D;&#x4E0D;&#x53D1;&#x6325;&#x4F5C;&#x7528;&#xFF0C;&#x4EC5;&#x4E3A;&#x65E5;&#x540E;&#x7559;&#x4F5C;&#x4ED6;&#x7528;&#x3002;</em></strong><s>&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x61D2;&#x5F97;&#x5220;&#x6389;&#x3002;</s></p>
+<h3 class="mume-header" id="1-mainwindow%E7%B1%BB">1&#x3001;MainWindow&#x7C7B;</h3>
+
+<p>MainWindow&#x7C7B;&#x5C5E;&#x6027;&#x548C;&#x63A5;&#x53E3;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">MainWindow</span> <span class="token punctuation">:</span> <span class="token keyword">public</span> QMainWindow
+<span class="token punctuation">{</span>
+    <span class="token constant">Q_OBJECT</span>
+
+<span class="token keyword">public</span><span class="token punctuation">:</span>
+    explicit <span class="token function">MainWindow</span><span class="token punctuation">(</span>QWidget <span class="token operator">*</span>parent <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">~</span><span class="token function">MainWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">protected</span><span class="token punctuation">:</span>
+    <span class="token keyword">void</span> <span class="token function">closeEvent</span><span class="token punctuation">(</span>QCloseEvent <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">private</span><span class="token punctuation">:</span>
+    Ui<span class="token punctuation">:</span><span class="token punctuation">:</span>MainWindow <span class="token operator">*</span>ui<span class="token punctuation">;</span>
+    <span class="token comment">//&#x6587;&#x4EF6;&#x4FDD;&#x5B58;&#x6807;&#x8BC6;&#x7B26;</span>
+    bool saved<span class="token punctuation">;</span>
+    
+    QWidget <span class="token operator">*</span>widget<span class="token punctuation">;</span>
+
+    <span class="token comment">//&#x5E03;&#x5C40;&#x7BA1;&#x7406;&#x5668;</span>
+    QLayout <span class="token operator">*</span>layout<span class="token punctuation">;</span>
+
+    <span class="token comment">//&#x8868;&#x683C;&#x53CA;&#x5176;&#x521D;&#x59CB;&#x5316;&#x51FD;&#x6570;</span>
+    QTableWidget <span class="token operator">*</span>table<span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">tableInitialize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//&#x83DC;&#x5355;&#x680F;&#x9009;&#x9879;</span>
+    QAction <span class="token operator">*</span>newAction<span class="token punctuation">;</span>
+    QAction <span class="token operator">*</span>openAction<span class="token punctuation">;</span>
+    QAction <span class="token operator">*</span>saveAction<span class="token punctuation">;</span>
+    QAction <span class="token operator">*</span>exitAction<span class="token punctuation">;</span>
+    QAction <span class="token operator">*</span>addAction<span class="token punctuation">;</span>
+    QAction <span class="token operator">*</span>deleteAction<span class="token punctuation">;</span>
+    QAction <span class="token operator">*</span>moveUpAction<span class="token punctuation">;</span>
+    QAction <span class="token operator">*</span>moveDownAction<span class="token punctuation">;</span>
+    QAction <span class="token operator">*</span>insertAction<span class="token punctuation">;</span>
+    
+    <span class="token comment">//&#x6392;&#x5E8F;&#x8F85;&#x52A9;&#x6570;&#x7EC4;&#x3002;&#x7528;&#x4E8E;&#x5B9E;&#x73B0;&#x5BF9;&#x67D0;&#x5C5E;&#x6027;&#x7684;&#x7B2C;&#x5947;&#x6570;&#x6B21;&#x4E3A;&#x6B63;&#x6392;&#xFF0C;&#x5076;&#x6570;&#x6B21;&#x4E3A;&#x5012;&#x6392;</span>
+    bool c<span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">//&#x50A8;&#x5B58;&#x6709;&#x8868;&#x683C;&#x4E0B;&#x62C9;&#x9009;&#x9879;&#x7684;QComboBox</span>
+    QVector<span class="token operator">&lt;</span>QComboBox<span class="token operator">*</span><span class="token operator">&gt;</span> <span class="token operator">*</span>QComboBoxList<span class="token punctuation">;</span>
+
+    <span class="token comment">//&#x5DE5;&#x5177;&#x680F;&#x641C;&#x7D22;&#x7684;&#x6587;&#x672C;&#x6846;&#x3001;&#x4E09;&#x4E2A;&#x6309;&#x94AE;&#x548C;&#x641C;&#x7D22;&#x5173;&#x952E;&#x8BCD;</span>
+    QLineEdit <span class="token operator">*</span>searchQLineEditToolBar<span class="token punctuation">;</span>
+    QPushButton <span class="token operator">*</span>searchButton<span class="token punctuation">;</span>
+    QPushButton <span class="token operator">*</span>lastButton<span class="token punctuation">;</span>
+    QPushButton <span class="token operator">*</span>nextButton<span class="token punctuation">;</span>
+    <span class="token comment">//&#x641C;&#x7D22;&#x6587;&#x672C;</span>
+    QString searchQstr<span class="token punctuation">;</span>
+    <span class="token comment">//&#x5F53;&#x524D;&#x641C;&#x7D22;&#x5230;&#x7684;&#x8868;&#x683C;&#x4F4D;&#x7F6E;</span>
+    int searchRow<span class="token punctuation">;</span>
+    int searchColumn<span class="token punctuation">;</span>
+
+    <span class="token comment">//&#x5FEB;&#x901F;&#x6392;&#x5E8F;&#xFF0C;&#x6309;&#x7167;&#x5B57;&#x7B26;&#x4E32;&#x6BD4;&#x8F83;&#x987A;&#x5E8F;   </span>
+    int <span class="token function">partition</span><span class="token punctuation">(</span>int p<span class="token punctuation">,</span> int q<span class="token punctuation">,</span> int column<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">quickSort</span><span class="token punctuation">(</span>int p<span class="token punctuation">,</span> int q<span class="token punctuation">,</span> int column<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">Swap</span><span class="token punctuation">(</span>int p1<span class="token punctuation">,</span>int p2<span class="token punctuation">,</span> int column<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//&#x8868;&#x9879;&#x53F3;&#x952E;&#x83DC;&#x5355;</span>
+    virtual <span class="token keyword">void</span> <span class="token function">contextMenuEvent</span><span class="token punctuation">(</span>QContextMenuEvent <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">private</span> slots<span class="token punctuation">:</span>
+    <span class="token comment">//&#x54CD;&#x5E94;&#x51FD;&#x6570;&#x4EEC;</span>
+
+    <span class="token comment">//&#x65B0;&#x5EFA;&#x6587;&#x4EF6;</span>
+    <span class="token keyword">void</span> <span class="token function">newFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x6253;&#x5F00;&#x6587;&#x4EF6;</span>
+    <span class="token keyword">void</span> <span class="token function">openFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x4FDD;&#x5B58;&#x6587;&#x4EF6;</span>
+    <span class="token keyword">void</span> <span class="token function">saveFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x8868;&#x683C;&#x672B;&#x5C3E;&#x589E;&#x52A0;&#x4E00;&#x884C;</span>
+    <span class="token keyword">void</span> <span class="token function">addModify</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x83DC;&#x5355;&#x680F;&#x4E2D;&#x7684;&#x5220;&#x9664;&#x5F53;&#x524D;&#x884C;</span>
+    <span class="token keyword">void</span> <span class="token function">deleteModify</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x83DC;&#x5355;&#x680F;&#x4E2D;&#x7684;&#x5F53;&#x524D;&#x884C;&#x4E0A;&#x79FB;&#x4E00;&#x884C;</span>
+    <span class="token keyword">void</span> <span class="token function">moveUpModify</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x83DC;&#x5355;&#x680F;&#x4E2D;&#x7684;&#x5F53;&#x524D;&#x884C;&#x4E0B;&#x79FB;&#x4E00;&#x884C;</span>
+    <span class="token keyword">void</span> <span class="token function">moveDownModify</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x6309;&#x7167;&#x9009;&#x5B9A;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</span>
+    <span class="token comment">//&#x53C2;&#x6570;&#x662F;&#x9009;&#x5B9A;&#x5C5E;&#x6027;&#x6240;&#x5728;&#x5217;&#x7684;&#x7D22;&#x5F15;</span>
+    <span class="token keyword">void</span> <span class="token function">sortView</span><span class="token punctuation">(</span>int colunmIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x8868;&#x683C;&#x4FEE;&#x6539;</span>
+    <span class="token comment">//&#x8868;&#x683C;&#x4FEE;&#x6539;&#x540E;&#xFF0C;&#x5C06;saved&#x6539;&#x4E3A;false&#xFF0C;&#x6807;&#x8BC6;&#x6587;&#x4EF6;&#x672A;&#x4FDD;&#x5B58;</span>
+    <span class="token keyword">void</span> <span class="token function">tableModify</span><span class="token punctuation">(</span>int row<span class="token punctuation">,</span>int column<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x5728;&#x5F53;&#x524D;&#x884C;&#x4E0A;&#x4E00;&#x884C;&#x63D2;&#x5165;&#x7A7A;&#x884C;</span>
+    <span class="token keyword">void</span> <span class="token function">insertBefore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x5728;&#x5F53;&#x524D;&#x884C;&#x4E0B;&#x4E00;&#x884C;&#x63D2;&#x5165;&#x7A7A;&#x884C;</span>
+    <span class="token keyword">void</span> <span class="token function">insertAfter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x53F3;&#x952E;&#x83DC;&#x5355;&#x4E2D;&#x7684;&#x5220;&#x9664;&#x5F53;&#x524D;&#x884C;</span>
+    <span class="token comment">//&#x5B9E;&#x9645;&#x4E0A;&#x4E0E;&#x83DC;&#x5355;&#x680F;&#x4E2D;&#x7684;&#x5220;&#x9664;&#x5F53;&#x524D;&#x884C;&#x54CD;&#x5E94;&#x51FD;&#x6570;&#xFF08;void deleteModify()&#xFF09;&#x6CA1;&#x6709;&#x533A;&#x522B;</span>
+    <span class="token keyword">void</span> <span class="token function">deleteLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x641C;&#x7D22;&#x6587;&#x672C;&#x83B7;&#x53D6;</span>
+    <span class="token comment">//&#x6BCF;&#x5F53;&#x641C;&#x7D22;&#x6587;&#x672C;&#x6846;&#x4E2D;&#x5185;&#x5BB9;&#x6539;&#x53D8;&#x65F6;&#xFF0C;&#x8C03;&#x7528;&#x8BE5;&#x51FD;&#x6570;&#x5BF9;&#x641C;&#x7D22;&#x6587;&#x672C;searchQstr&#x8FDB;&#x884C;&#x8D4B;&#x503C;</span>
+    <span class="token keyword">void</span> <span class="token function">searchQlineEditChanged</span><span class="token punctuation">(</span>QString qstr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x641C;&#x7D22;&#x6309;&#x94AE;&#x54CD;&#x5E94;&#x51FD;&#x6570;</span>
+    <span class="token comment">//&#x6267;&#x884C;&#x641C;&#x7D22;&#xFF0C;&#x641C;&#x51FA;&#x7B2C;&#x4E00;&#x4E2A;&#x7B26;&#x5408;&#x7684;&#x4F4D;&#x7F6E;&#x5E76;&#x9009;&#x4E2D;&#x9AD8;&#x4EAE;&#x3002;&#x641C;&#x4E0D;&#x5230;&#x7684;&#x8BDD;&#x8868;&#x683C;&#x4E0D;&#x4F1A;&#x6709;&#x4EFB;&#x4F55;&#x53D8;&#x5316;&#x3002;</span>
+    <span class="token keyword">void</span> <span class="token function">searchToolBarTriggered</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x641C;&#x7D22;&#x4E0A;&#x4E00;&#x4E2A;</span>
+    <span class="token keyword">void</span> <span class="token function">lastToolBarTriggered</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x641C;&#x7D22;&#x4E0B;&#x4E00;&#x4E2A;</span>
+    <span class="token keyword">void</span> <span class="token function">nextToolBarTriggered</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre><h3 class="mume-header" id="2-delegate%E7%B1%BB">2&#x3001;Delegate&#x7C7B;</h3>
+
+<p>Delegate&#x7C7B;&#x7EE7;&#x627F;&#x81EA;QDelegate&#x7C7B;&#xFF0C;&#x7528;&#x4EE5;&#x5B9E;&#x73B0;&#x7684;&#x6027;&#x522B;&#x548C;&#x4E13;&#x4E1A;&#x81EA;&#x5B9A;&#x4E49;&#x59D4;&#x6258;&#x3002;Delegate&#x7C7B;&#x5C5E;&#x6027;&#x548C;&#x63A5;&#x53E3;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Delegate</span> <span class="token punctuation">:</span> <span class="token keyword">public</span> QItemDelegate
+<span class="token punctuation">{</span>
+    <span class="token constant">Q_OBJECT</span>
+
+<span class="token keyword">public</span><span class="token punctuation">:</span>
+    
+    <span class="token function">Delegate</span><span class="token punctuation">(</span>QObject <span class="token operator">*</span>parent <span class="token operator">=</span> nullptr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">~</span><span class="token function">Delegate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x7ED8;&#x5236;&#x4E0B;&#x62C9;&#x9009;&#x9879;&#x83DC;&#x5355;</span>
+    <span class="token keyword">void</span> <span class="token function">paint</span><span class="token punctuation">(</span>QPainter <span class="token operator">*</span>painter<span class="token punctuation">,</span> <span class="token keyword">const</span> QStyleOptionViewItem <span class="token operator">&amp;</span>option<span class="token punctuation">,</span>
+        <span class="token keyword">const</span> QModelIndex <span class="token operator">&amp;</span>index<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x4E0B;&#x62C9;&#x9009;&#x9879;&#x5927;&#x5C0F;</span>
+    QSize <span class="token function">sizeHint</span><span class="token punctuation">(</span><span class="token keyword">const</span> QStyleOptionViewItem <span class="token operator">&amp;</span>option<span class="token punctuation">,</span> <span class="token keyword">const</span> QModelIndex <span class="token operator">&amp;</span>index<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x521B;&#x5EFA;&#x81EA;&#x5B9A;&#x4E49;&#x6309;&#x94AE;</span>
+    QWidget <span class="token operator">*</span><span class="token function">createEditor</span><span class="token punctuation">(</span>QWidget <span class="token operator">*</span>parent<span class="token punctuation">,</span> <span class="token keyword">const</span> QStyleOptionViewItem <span class="token operator">&amp;</span>option<span class="token punctuation">,</span> <span class="token keyword">const</span> QModelIndex <span class="token operator">&amp;</span>index<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#x8BBE;&#x7F6E;&#x81EA;&#x5B9A;&#x4E49;&#x6309;&#x94AE;&#x5185;&#x5BB9;</span>
+    <span class="token keyword">void</span> <span class="token function">setEditorData</span><span class="token punctuation">(</span>QWidget <span class="token operator">*</span>editor<span class="token punctuation">,</span> <span class="token keyword">const</span> QModelIndex <span class="token operator">&amp;</span>index<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">void</span> <span class="token function">setModelData</span><span class="token punctuation">(</span>QWidget <span class="token operator">*</span>editor<span class="token punctuation">,</span> QAbstractItemModel <span class="token operator">*</span>model<span class="token punctuation">,</span> <span class="token keyword">const</span> QModelIndex <span class="token operator">&amp;</span>index<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+
+<span class="token keyword">private</span><span class="token punctuation">:</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre><h3 class="mume-header" id="3-datedelegate%E7%B1%BB">3&#x3001;DateDelegate&#x7C7B;</h3>
+
+<p>DateDelegate&#x7C7B;&#x4E5F;&#x7EE7;&#x627F;&#x81EA;QDelegate&#x7C7B;&#xFF0C;&#x7528;&#x4EE5;&#x5B9E;&#x73B0;&#x51FA;&#x751F;&#x65E5;&#x671F;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x59D4;&#x6258;&#xFF0C;DateDelegate&#x7C7B;&#x5C5E;&#x6027;&#x548C;&#x63A5;&#x53E3;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">DateDelegate</span> <span class="token punctuation">:</span> <span class="token keyword">public</span> QItemDelegate
+<span class="token punctuation">{</span>
+    <span class="token constant">Q_OBJECT</span>
+
+<span class="token keyword">public</span><span class="token punctuation">:</span>
+    <span class="token function">DateDelegate</span><span class="token punctuation">(</span>QObject <span class="token operator">*</span>parent <span class="token operator">=</span> nullptr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token operator">~</span><span class="token function">DateDelegate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//&#x8FD4;&#x56DE;&#x6539;&#x53D8;Model&#x6570;&#x636E;&#x7684;widget&#xFF0C;&#x8BE5;widget&#x662F;&#x7ECF;&#x8FC7;&#x5B9A;&#x5236;&#x884C;&#x4E3A;&#x7684;Widget</span>
+    QWidget <span class="token operator">*</span><span class="token function">createEditor</span><span class="token punctuation">(</span>QWidget <span class="token operator">*</span> parent<span class="token punctuation">,</span> <span class="token keyword">const</span> QStyleOptionViewItem <span class="token operator">&amp;</span> option<span class="token punctuation">,</span> <span class="token keyword">const</span> QModelIndex <span class="token operator">&amp;</span> index<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//&#x5C06;&#x53EF;&#x64CD;&#x4F5C;&#x7684;&#x6570;&#x636E;&#x63D0;&#x4F9B;&#x7ED9;widget</span>
+    <span class="token keyword">void</span> <span class="token function">setEditorData</span><span class="token punctuation">(</span>QWidget <span class="token operator">*</span> editor<span class="token punctuation">,</span> <span class="token keyword">const</span> QModelIndex <span class="token operator">&amp;</span> index<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">//&#x5C06;widget&#x7684;&#x6570;&#x636E;&#x5C55;&#x793A;&#x5230;Item&#x4E2D;</span>
+    <span class="token keyword">void</span> <span class="token function">setModelData</span><span class="token punctuation">(</span>QWidget <span class="token operator">*</span> editor<span class="token punctuation">,</span> QAbstractItemModel <span class="token operator">*</span> model<span class="token punctuation">,</span> <span class="token keyword">const</span> QModelIndex <span class="token operator">&amp;</span> index<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>  
+
+    <span class="token comment">//&#x786E;&#x4FDD;widget&#x80FD;&#x591F;&#x6B63;&#x786E;&#x663E;&#x793A;&#x5230;view&#x4E2D;</span>
+    <span class="token keyword">void</span> <span class="token function">updateEditorGeometry</span><span class="token punctuation">(</span>QWidget <span class="token operator">*</span> editor<span class="token punctuation">,</span> <span class="token keyword">const</span> QStyleOptionViewItem <span class="token operator">&amp;</span> option<span class="token punctuation">,</span> <span class="token keyword">const</span> QModelIndex <span class="token operator">&amp;</span> index<span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+<span class="token keyword">private</span><span class="token punctuation">:</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</pre>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

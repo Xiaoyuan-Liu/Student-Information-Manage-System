@@ -111,7 +111,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(table,SIGNAL(cellChanged(int,int)),this,SLOT(tableModify(int,int)));
 
     QStringList header;
-    header<<tr("姓名")<<tr("性别")<<tr("学号")<<tr("年级")<<tr("专业方向")<<tr("出生日期(年/月/日)")<<(tr("籍贯"))<<(tr("住址"));
+    header<<tr("姓名")<<tr("性别")<<tr("学号")<<tr("年级")<<tr("专业方向")<<tr("出生日期(年-月-日)")<<(tr("籍贯"))<<(tr("住址"));
     //table->horizontalHeader()->setDefaultSectionSize(15);
     connect(table->horizontalHeader(),SIGNAL(sectionClicked(int)),this, SLOT(sortView(int)));
     table->setHorizontalHeaderLabels(header);
@@ -195,7 +195,7 @@ void MainWindow::tableInitialize(){
     connect(table,SIGNAL(cellChanged(int,int)),this,SLOT(tableModify(int,int)));
 
     QStringList header;
-    header<<tr("姓名")<<tr("性别")<<tr("学号")<<tr("年级")<<tr("专业方向")<<tr("出生日期(年/月/日)")<<(tr("籍贯"))<<(tr("住址"));//<<tr("GPA");
+    header<<tr("姓名")<<tr("性别")<<tr("学号")<<tr("年级")<<tr("专业方向")<<tr("出生日期(年-月-日)")<<(tr("籍贯"))<<(tr("住址"));//<<tr("GPA");
     //connect(table->horizontalHeader(),SIGNAL(sectionClicked(int)),this, SLOT(sortView(int)));
     connect(table->horizontalHeader(),SIGNAL(sectionDoubleClicked(int)),this, SLOT(sortView(int)));
     //table->horizontalHeader()->setDefaultSectionSize(15);
@@ -273,7 +273,7 @@ void MainWindow::openFile(){
             return;
         }
     }
-    saved = true;
+
     QString path = QFileDialog::getOpenFileName(this,
                                                 tr("Open File"),
                                                 ".",
@@ -303,6 +303,7 @@ void MainWindow::openFile(){
             }
         }
         file.close();
+        saved = true;
     } /*else {
         QMessageBox::warning(this, tr("Path"),
                              tr("You did not select any file."));
@@ -362,7 +363,8 @@ void MainWindow::addModify(){
     //connect(tmp,SIGNAL(currentIndexChanged(QString)),this,SLOT(print_s()));
     table->setItemDelegateForColumn(1,new Delegate(this));
     table->setItemDelegateForColumn(4,new Delegate(this));
-   // table->setIte
+    table->setItemDelegateForColumn(5,new DateDelegate(this));
+    // table->setIte
     //table->item(table->rowCount()-1,1)->setFlags(Qt::NoItemFlags);
     QComboBoxList->push_back(tmp);
 

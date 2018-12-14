@@ -28,6 +28,7 @@ using namespace std;
 #include"studentdatabase.h"
 #include"delegate.h"
 #include"dialog.h"
+#include"datedelegate.h"
 namespace Ui {
 class MainWindow;
 }

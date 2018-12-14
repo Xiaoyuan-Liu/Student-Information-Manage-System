@@ -1,0 +1,13 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\student.o
+./release\studentdatabase.o
+./release\delegate.o
+./release\dialog.o
+./release\datedelegate.o
+./release\moc_mainwindow.o
+./release\moc_delegate.o
+./release\moc_dialog.o
+./release\moc_datedelegate.o
+);
